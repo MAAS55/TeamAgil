@@ -14,3 +14,20 @@ ingen speciell som behöver hjälp just nu, kan ändras senare i projektet.
 
 ### Förändring i planen eller tavlan
 än så länge behöver inte planen att ändras.
+_____________________________________________________
+## Daily Scrum – Datum 2026-10-14
+
+### Framsteg mot sprintmålet
+Vi har gjort ett ER-diagram i draw.io som visar hur EventFlows databas är uppbyggd.
+
+### Arbete till nästa avstämning
+Arbeta med veckans uppdrag 10/14
+
+### Hinder eller risker
+Det är inte helt tydligt på vad projektet kommer blir
+
+### Hjälp eller beslut som behövs
+ingen speciell som behöver hjälp just nu, kan ändras senare i projektet.
+
+### Förändring i planen eller tavlan
+Det kan förekomma i projektet

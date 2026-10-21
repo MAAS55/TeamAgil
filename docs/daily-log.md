@@ -31,3 +31,19 @@ ingen speciell som behöver hjälp just nu, kan ändras senare i projektet.
 
 ### Förändring i planen eller tavlan
 Det kan förekomma i projektet
+_____________________________________________________
+## Daily Scrum – Datum 2026-10-21
+
+### Framsteg mot sprintmålet
+Vi har skapat en database i SQL för vår Eventflow, planen är att felsöka och identetfiera och prioritera vad som börs gå vidare med
+
+### Arbete till nästa avstämning
+Arbeta med veckans uppdrag 10/28
+
+### Hinder eller risker
+Vi vet vad vi ska göra vilket är bra den enda hinder kanske blir hur vi navigerar oss dit. Det handlar om planeringen och tiden.
+### Hjälp eller beslut som behövs
+ingen speciell som behöver hjälp just nu, kan ändras senare i projektet.
+
+### Förändring i planen eller tavlan
+Det kan förekomma i projektet

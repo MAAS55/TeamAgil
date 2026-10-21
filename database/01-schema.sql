@@ -49,8 +49,8 @@ CREATE TABLE TypeEvent(
 
 CREATE TABLE Visitor(
     VisitorId INT IDENTITY(1,1) PRIMARY KEY,
-    VisitorName NVARCHAR(50),
-    VisitorEmail NVARCHAR(100),
+    VisitorName NVARCHAR(50) NOT NULL,
+    VisitorEmail NVARCHAR(100) NOT NULL,
     VisitorNumber INT NOT NULL,
 ); 
 

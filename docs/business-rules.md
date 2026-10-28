@@ -27,11 +27,13 @@ Från evenemang håll: Kan ha flera anmälningar
 ## Dokumentera minst:
 
 ### fem verksamhetsregler
-* Anmälningar måste åtminstone ha ett deltagare, för kunna anmäla sig
-* Deltagare kan anmäla sig flera gånger, det kommer räknas som flera anmälningar för undvika dubbla anmälningar i samma rad
-* Man kan bara anmäla sig en gång i en samma event, för att undvika att ha två exakt samma anmälning i en exakt samma event
-* Kan har bara ett evenemang per anmälning, för att undvika två olika evenemang i ett cell som går imot 1NF
+* Anmälningar måste åtminstone ha en deltagare för kunna anmäla sig
+* Deltagare kan anmäla sig flera gånger, det kommer räknas som flera anmälningar för att undvika dubbla anmälningar i samma rad
+* Man kan bara anmäla sig en gång till ett event, för att undvika att dubbla anmälningar i samma event
+* Kan ha bara ett evenemang per anmälning, för att undvika två olika evenemang i ett cell som går imot 1NF
 * Evenemang kan ha både noll eller flera anmälningar, för att evenemang kan göra även om den har noll anmälning
+* ALla event måste minst ha oganisation.
+* Alla Organinsation kan ha en eller flera events.
 
 ### en obligatorisk relation
 * Ett evenemang måste kunna identifiera genom namn eller kategorisering.

@@ -48,3 +48,17 @@ ingen speciell som behöver hjälp just nu, kan ändras senare i projektet.
 
 ### Förändring i planen eller tavlan
 Det kan förekomma i projektet
+_____________________________________________________
+## Daily Scrum – Datum 2026-10-28
+
+### Vad är Done sedan senaste avstämningen?
+Vi har skapat databasen i SQL och lagt in JOIN-queries, triggers, en stored procedure och constraints. Det gör att vi kan kategorisera och filtrera datan i databasen enklare framöver.
+### Vad behöver avslutas idag?
+Vi siktar på att bli klara med veckans mål idag och sedan förfina det på fredag 10/30.
+### Finns det hinder i SQL-, trigger- eller frontendarbetet?
+Vi är fortfarande osäkra på hur kopplingen mellan databasen och frontend ska se ut. Vi reder ut det tillsammans vid dagens gemensamma genomgång på eftermiddagen.
+### Väntar något på review?
+Nej – inget ligger på review just nu. Vi går igenom arbetet tillsammans i slutet av dagen för att säkerställa att vi är på rätt spår.
+
+### Behöver WIP, ansvar eller prioritering ändras?
+Nej, nuvarande upplägg håller. Vi stämmer av efter dagens gemensamma genomgång och justerar vid behov.

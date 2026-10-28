@@ -1,16 +1,10 @@
-CREATE PROCEDURE dbo.usp_Event
-@EventId INT
+ALTER PROCEDURE dbo.usp_Event
+@EventTitle NVARCHAR(50) 
 AS
 BEGIN
-	SELECT
-		EventId,
-		EventTitle,
-		EventDescription,
-		LocationName,
-		CategoryName,
-		OrganizerName
+	SELECT *
 	FROM wv_Event
-	WHERE EventId = @EventId;
+	WHERE EventTitle LIKE '%' + @EventTitle + '%';
 END;
 GO
 
@@ -18,16 +12,12 @@ ALTER PROCEDURE dbo.usp_Booking
 @BookingId INT
 AS
 BEGIN
-	SELECT
-		BookingId,
-		VisitorId,
-		VisitorName,
-		VisitorEmail,
-		VisitorNumber
+	SELECT *
 	FROM wv_Booking
 	WHERE BookingId = @BookingId;
 END;
 GO
 	
-EXEC usp_Booking @BookingId = 2;
-EXEC usp_Event @EventId = 2;
+EXEC usp_Booking @BookingId = 3;
+EXEC usp_Event @EventTitle = 'ro';	
+EXEC usp_Event @EventTitle = 'Jazz';

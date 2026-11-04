@@ -62,3 +62,21 @@ Nej – inget ligger på review just nu. Vi går igenom arbetet tillsammans i sl
 
 ### Behöver WIP, ansvar eller prioritering ändras?
 Nej, nuvarande upplägg håller. Vi stämmer av efter dagens gemensamma genomgång och justerar vid behov.
+
+
+_____________________________________________________
+## Daily Scrum – Datum 2026-11-04
+
+### Framsteg mot sprintmålet
+ja, tanken är att koppla små funktioner från backend till frontend. såsom sök funktion, filteria och kategorisera.
+### Arbete till nästa avstämning
+vi ska arbeta med veckans uppdrag 11/04
+
+### Hinder eller risker
+nej, men risk för fel tolkning på själva updraget. 
+### Hjälp eller beslut som behövs
+nej, det gankse klart och alla är med på banan 
+
+### Förändring i planen eller tavlan
+vid föra träff gjorde vi lite små föränringar i tavlan och om strukturera planen så att den passar vår back och frontend lite mera.
+

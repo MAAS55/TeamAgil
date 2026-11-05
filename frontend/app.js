@@ -70,19 +70,18 @@ function displayData(eventData) {
 }
 
 function filterData(eventData, filter) {
-    let filteredData = [];
+    return eventData.filter(element => {
+        const matchesCategory = !filter.category || element.eventCategory === filter.category;
+        const matchesLocation = !filter.location || element.eventLocation === filter.location;
+        const matchesOrganizer = !filter.organizer || element.eventOrganizer === filter.organizer;
 
-    eventData.forEach(element => {
-        if (element.eventCategory === filter) {
-            filteredData.push(element)
-        }
+        return matchesCategory && matchesLocation && matchesOrganizer;
     });
-    return filteredData
 }
 
 function loadData() {
     if(isFiltered === true) {
-        displayData(filterData(eventData, "Music"))
+        displayData(filterData(eventData, {location: "Sundsvall"}))
     } else {
         displayData(eventData);
     }

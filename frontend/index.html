@@ -6,9 +6,10 @@
     <title>EventFlow</title>
     <link rel="stylesheet" href="style.css">
     <script src="app.js" defer></script>
+    
 </head>
 <body>
-    <header>
+    <header class="header">
         <h1>Event Flow</h1>
         <nav class="nav-bar">
             <ul>
@@ -16,11 +17,11 @@
                 <li><a href="#events">Visa Arrangemangs</a></li>
                 <li><a href="#booking">Boka Arrangemang</a></li>
             </ul>
-            <form>
-                <input type="search" name="" id="">
-                <button type="submit">Sök</button>
-            </form>
         </nav>
+        <form>
+            <input type="search" name="" id="">
+            <button type="submit">Sök</button>
+        </form>
         
     </header>
     <main>
@@ -30,13 +31,12 @@
         </section>
         <section id="events">
             <h2>Nuvarande Arrangemangs</h2>
-            <div class="event-list">
-                
+            <div class="event-list" id="eventList">
             </div>
         </section>
         <section id="booking">
             <h2>Boka Arrangemang</h2>
-            <form action="">
+            <form id="eventForm">
                 <div>
                     <label for="bName">Besökare Namn</label>
                     <input id="bName" name="Bname" type="text">
@@ -59,6 +59,7 @@
                 </div>
                 <button type="submit">Boka</button>
             </form>
+            <p id="formFeedback" role="status" aria-live="polite"></p>
         </section>
     </main>
     <footer>

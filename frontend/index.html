@@ -6,9 +6,10 @@
     <title>EventFlow</title>
     <link rel="stylesheet" href="style.css">
     <script src="app.js" defer></script>
+    
 </head>
 <body>
-    <header>
+    <header class="header">
         <h1>Event Flow</h1>
         <nav class="nav-bar">
             <ul>
@@ -16,11 +17,11 @@
                 <li><a href="#events">Visa Arrangemangs</a></li>
                 <li><a href="#booking">Boka Arrangemang</a></li>
             </ul>
-            <form>
-                <input type="search" name="" id="">
-                <button type="submit">Sök</button>
-            </form>
         </nav>
+        <form>
+            <input type="search" name="" id="">
+            <button type="submit">Sök</button>
+        </form>
         
     </header>
     <main>
@@ -30,62 +31,12 @@
         </section>
         <section id="events">
             <h2>Nuvarande Arrangemangs</h2>
-            <div class="event-list">
-                <article class="event-card">
-                    <h3>Jazz Concert</h3>
-                    <p>Live jazz performance</p>
-                    <img src="./images/filip-mishevski-TP4VTvjxEmo-unsplash.jpg">
-                    <details open>
-                        <summary>Details</summary>
-                        <ul>
-                            <li>Datum: 2026-10-12</li>
-                            <li>Tid: 12:00</li>
-                            <li>Arrangör: Sunsdvall Jazzklubb</li>
-                            <li>Kategori: Music</li>
-                            <li>Plats: Sundsvall</li>
-                        </ul>
-                    </details>
-                    <a href="#booking">Boka här</a>
-                </article>
-
-                <article class="event-card">
-                    <h3>Rock Concert</h3>
-                    <p>Kizz live band</p>
-                    <img src="./images/roberto-rendon--Ma-aFuivjs-unsplash.jpg">
-                    <details open>
-                        <summary>Details</summary>
-                        <ul>
-                            <li>Datum: 2026-11-05</li>
-                            <li>Tid: 05:00</li>
-                            <li>Arrangör: Nordic Events AB</li>
-                            <li>Kategori: Music</li>
-                            <li>Plats: Sundsvall</li>
-                        </ul>
-                    </details>
-                    <a href="#booking">Boka här</a>
-                </article>
-
-                <article class="event-card">
-                    <h3>Höstcupen i Fotboll</h3>
-                    <p>Lokal fotbollsturnering för juniorer</p>
-                    <img src="./images/omar-ramadan-eEhOyEtBGMQ-unsplash.jpg">
-                    <details open>
-                        <summary>Details</summary>
-                        <ul>
-                            <li>Datum: 2026-11-12</li>
-                            <li>Tid: 14:00</li>
-                            <li>Arrangör: Nordic Events AB</li>
-                            <li>Kategori: Sport</li>
-                            <li>Plats: Stockholm</li>
-                        </ul>
-                    </details>
-                    <a href="#booking">Boka här</a>
-                </article>
+            <div class="event-list" id="eventList">
             </div>
         </section>
         <section id="booking">
             <h2>Boka Arrangemang</h2>
-            <form action="">
+            <form id="eventForm">
                 <div>
                     <label for="bName">Besökare Namn</label>
                     <input id="bName" name="Bname" type="text">
@@ -108,6 +59,7 @@
                 </div>
                 <button type="submit">Boka</button>
             </form>
+            <p id="formFeedback" role="status" aria-live="polite"></p>
         </section>
     </main>
     <footer>

@@ -17,3 +17,10 @@ eventcard.forEach((card) => {
     opencheck(dialog);
   });
 
+const bookingButton = document.getElementById("booking-button");
+
+const button = document.createElement("button");
+button.type = "submit";
+button.textContent = "Boka";
+
+bookingButton.appendChild(button);

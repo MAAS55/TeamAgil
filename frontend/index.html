@@ -25,9 +25,13 @@
         
     </header>
     <main>
-        <section id="about">
-            <h2>Upptäck och upplev det som händer nära dig!</h2>
-            <p>Eventflow samlar alla lokala evenemang från kommuner och föreningar på ett ställe. Hitta dina favoriter, se var det händer och säkra din plats direkt.</p>
+        <section id="about" class="about">
+            <img src="images/concert_crowd_people_134866_2560x1080.jpg" alt="Event Flow Logo" class="logo">
+            <div class="about-text">
+                <h2>Upptäck och upplev det som händer nära dig!</h2>
+                <p>Eventflow samlar alla lokala evenemang från kommuner och föreningar på ett ställe. Hitta dina favoriter, se var det händer och säkra din plats direkt.</p>
+            </div>
+            
         </section>
         <section id="events">
             <h2>Nuvarande Arrangemangs</h2>
@@ -43,11 +47,12 @@
                 </div>
                 <div>
                     <label for="bEmail">Besökare Email</label>
-                    <input id="bEmail" name="bEmail" type="email">
+                    <input id="bEmail" name="bEmail" type="email" placeholder="exempel@epost.se">
                 </div>
                 <div>
                     <label for="bPhone">Besökare Telefon Nummer</label>
-                    <input type="tel" id="bPhone" name="bPhone" pattern="[0-9]{3}-[0-9]{3}-[0-9]{2}-[0-9]{2}">
+                    <input type="tel" id="bPhone" name="bPhone" pattern="[0-9]{3}-[0-9]{7}" placeholder="070-1234567"
+                    required oninvalid="this.setCustomValidity('Telefonnummer måste vara i formatet 070-1234567.')" oninput="this.setCustomValidity('')">
                 </div>
                 <div>
                     <label for="bEvent">Välj Event</label>

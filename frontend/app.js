@@ -33,7 +33,16 @@ let eventData =
   ];
 
 const eventList = document.querySelector("#eventList")
-function loadAllData(eventData) {
+let isFiltered = false;
+// Booking formulär
+const form = document.querySelector("#eventForm");
+const nameInput = document.querySelector("#bName");
+const emailInput = document.querySelector("#bEmail");
+const phoneInput = document.querySelector("#bPhone");
+const eventSelect = document.querySelector("#bEvent");
+const feedback = document.querySelector("#formFeedback")
+
+function displayData(eventData) {
     eventData.forEach(event => {
         const [date, time] = event.eventDate.split(" ");
         let eventCard = document.createElement("article");
@@ -60,15 +69,28 @@ function loadAllData(eventData) {
     });
 }
 
-loadAllData(eventData);
+function filterData(eventData, filter) {
+    let filteredData = [];
 
-// Booking formulär
-const form = document.querySelector("#eventForm");
-const nameInput = document.querySelector("#bName");
-const emailInput = document.querySelector("#bEmail");
-const phoneInput = document.querySelector("#bPhone");
-const eventSelect = document.querySelector("#bEvent");
-const feedback = document.querySelector("#formFeedback")
+    eventData.forEach(element => {
+        if (element.eventCategory === filter) {
+            filteredData.push(element)
+        }
+    });
+    return filteredData
+}
+
+function loadData() {
+    if(isFiltered === true) {
+        displayData(filterData(eventData, "Music"))
+    } else {
+        displayData(eventData);
+    }
+}
+
+loadData();
+
+
 
 form.addEventListener("submit", event => {
     event.preventDefault();

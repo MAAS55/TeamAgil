@@ -30,9 +30,24 @@ let eventData =
       eventCategory: "Sport",
       eventImg: "./images/omar-ramadan-eEhOyEtBGMQ-unsplash.jpg"
     },
+    {
+      eventId: 4,
+      eventTitle: "Höstcupen i Fotboll",
+      eventDesc: "Lokal fotbollsturnering för juniorer",
+      eventLocation: "Sundsvall",
+      eventDate: "2026-11-12 14:00",
+      eventOrganizer: "Nordic Events AB",
+      eventCategory: "Sport",
+      eventImg: "./images/omar-ramadan-eEhOyEtBGMQ-unsplash.jpg"
+    },
   ];
 
 const eventList = document.querySelector("#eventList")
+const filterStatus = document.querySelector("#filterStatus");
+const filterLocation = document.querySelector("#filterLocation");
+const filterCategory = document.querySelector("#filterCategory");
+const filterOrganizer = document.querySelector("#filterCategory");
+
 let isFiltered = false;
 // Booking formulär
 const form = document.querySelector("#eventForm");
@@ -81,7 +96,7 @@ function filterData(eventData, filter) {
 
 function loadData() {
     if(isFiltered === true) {
-        displayData(filterData(eventData, {location: "Sundsvall"}))
+        displayData(filterData(eventData, {location: "Sundsvall", category: "Music"}))
     } else {
         displayData(eventData);
     }

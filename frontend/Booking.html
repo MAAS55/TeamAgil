@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EventFlow</title>
+    <link rel="stylesheet" href="BookingStyle.css">
+    <script src="BookingScript.js" defer></script>
+    
+</head>
+<body>  
+    <header class="header"> 
+        <h1>Boka Arrangemang</h1>
+    </header>
+    <main>
+        <section id="booking" class="booking">
+            <form id="eventForm" class="eventForm">
+                <div>
+                    <label for="bName">Besökare Namn</label>
+                    <input id="bName" name="Bname" type="text">
+                </div>
+                <div>
+                    <label for="bEmail">Besökare Email</label>
+                    <input id="bEmail" name="bEmail" type="email" placeholder="exempel@epost.se">
+                </div>
+                <div>
+                    <label for="bPhone">Besökare Telefon Nummer</label>
+                    <input type="tel" id="bPhone" name="bPhone" pattern="[0-9]{3}-[0-9]{7}" placeholder="070-1234567"
+                    required oninvalid="this.setCustomValidity('Telefonnummer måste vara i formatet 070-1234567.')" oninput="this.setCustomValidity('')">
+                </div>
+                <div>
+                    <label for="bEvent">Välj Event</label>
+                    <select name="bEvent" id="bEvent">
+                        <option value="1">Jazz Concert</option>
+                        <option value="2">Rock Concert</option>
+                        <option value="3">Höstcupen i Fotboll</option>
+                    </select>
+                </div>
+                <div>   
+                    <label for="bTicket">Välj Antal Biljetter</label>
+                    <select name="bTicket" id="bTicket">
+                        <option value="1">1</option>
+                        <option value="2">2</option>
+                        <option value="3">3</option>
+                        <option value="4">4</option>
+                        <option value="5">5</option>
+                    </select>
+                </div>
+                <div>
+                    <label for="bDate">Välj Datum</label>
+                    <input type="date" id="bDate" name="bDate" min="2024-01-01" max="2024-12-31">
+                </div>
+                <div>
+                    <label for="bPlace">Välj plats</label>
+                    <select name="bPlace" id="bPlace">
+                        <option value="1">Stockholm</option>
+                        <option value="2">Malmö</option>
+                        <option value="3">Göteborg</option>
+                        <option value="4">Linköping</option>
+                        <option value="5">Sundsvall</option>
+                    </select>
+                </div>
+                <button type="submit">Boka</button>
+            </form>
+            <p id="formFeedback" role="status" aria-live="polite"></p>
+        </section>
+    </main>
+    <footer>
+        <p>2024 EventFlow. All rights reserved.</p>
+    </footer>
+</body>
+</html>

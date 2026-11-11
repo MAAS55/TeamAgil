@@ -42,6 +42,8 @@ let eventData =
     },
   ];
 
+const apiUrl = "http://localhost:5043/api/events"
+
 const eventList = document.querySelector("#eventList")
 const filterStatus = document.querySelector("#filterStatus");
 const filterLocation = document.querySelector("#filterLocation");
@@ -61,22 +63,37 @@ const feedback = document.querySelector("#formFeedback")
 function displayData(eventData) {
     eventList.innerHTML = '';
     eventData.forEach(event => {
-        const [date, time] = event.eventDate.split(" ");
+        //const [date, time] = event.eventDate.split(" ");
+
+        const eventDateObj = new Date(event.startsAt);
+        // Output: "12 dec. 2026" (or "12 december 2026" if month: 'long')
+        const date = eventDateObj.toLocaleDateString('sv-SE', {
+        year: 'numeric',
+        month: 'short',
+        day: 'numeric'
+        });
+
+        // Output: "10:30"
+        const time = eventDateObj.toLocaleTimeString('sv-SE', {
+        hour: '2-digit',
+        minute: '2-digit'
+        });
+
         let eventCard = document.createElement("article");
         eventCard.innerHTML = 
         `
                 <article class="event-card">
-                    <h3>${event.eventTitle}</h3>
-                    <p>${event.eventDesc}</p>
+                    <h3>${event.title}</h3>
+                    <p>${event.description}</p>
                     <img src="${event.eventImg}">
                     <details open>
                         <summary>Details</summary>
                         <ul>
                             <li>Datum: ${date}</li>
                             <li>Tid: ${time}</li>
-                            <li>Arrangör: ${event.eventOrganizer}</li>
-                            <li>Kategori: ${event.eventCategory}</li>
-                            <li>Plats: ${event.eventLocation}</li>
+                            <li>Arrangör: ${event.organizer}</li>
+                            <li>Kategori: ${event.category}</li>
+                            <li>Plats: ${event.venue}</li>
                         </ul>
                     </details>
                     <a href="#booking">Boka här</a>
@@ -103,13 +120,16 @@ function filterData(eventData, filter) {
     });
 }
 
-function loadData() {
-    console.log(filterStatus.checked)
+async function loadData() {
+
+    let fetchData = await fetchEventData(apiUrl);
+    console.log(fetchData);
+
     if(filterStatus.checked === true) {
         console.log("running filter")
         console.log(filterLocation.value, filterCategory.value, filterOrganizer.value)
         
-        let filterDataResult = filterData(eventData, {location: filterLocation.value, category: filterCategory.value, organizer: filterOrganizer.value})
+        let filterDataResult = filterData(fetchData, {location: filterLocation.value, category: filterCategory.value, organizer: filterOrganizer.value})
         if (filterDataResult.length) {
             console.log("running filter thing")
             displayData(filterDataResult)
@@ -117,14 +137,34 @@ function loadData() {
             displayError("Kunde inte hitta några event med dessa filter")
         }
 
-        console.log(filterDataResult)
         
     } else {
-        displayData(eventData);
+        displayData(fetchData);
     }
 }
 
+async function fetchEventData(url) {
+    console.log("running fetch event")
+    try {
+    const response = await fetch(url, {
+      method: 'GET', // 'POST', 'PUT', 'DELETE', etc.
+      headers: {
+        'Content-Type': 'application/json',
+      }
+    });
 
+    // Check if HTTP status is in the 200–299 range
+    if (!response.ok) {
+      throw new Error(`HTTP error! Status: ${response.status}`);
+    }
+
+    const data = await response.json();
+    return data;
+  } catch (error) {
+    console.error('Fetch error:', error);
+    throw error;
+  }
+}
 
 
 form.addEventListener("submit", event => {

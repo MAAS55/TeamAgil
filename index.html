@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EventFlow</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="app.js" defer></script>
+    
+</head>
+<body>
+<header class="header">
+    <h1>Event Flow</h1>
+    <nav class="nav-bar">
+        <ul>
+     
+            <li><a href="#about">Om Event Flow</a></li>
+            <li><a href="#events">Visa Arrangemangs</a></li>
+            <li><a href="#booking">Boka Arrangemang</a></li>
+        </ul>
+    </nav>
+</header>
+
+<section class="search-section">
+    <form class="search-form">
+        <input type="search" id="searchinput" placeholder="Sök evenemang">
+        <ul id="suggestionList"></ul>
+        <button type="submit">Sök</button>
+    </form>
+</section>
+
+    <main>
+        <section id="about">
+            <h2>Upptäck och upplev det som händer nära dig!</h2>
+            <p>Eventflow samlar alla lokala evenemang från kommuner och föreningar på ett ställe. Hitta dina favoriter, se var det händer och säkra din plats direkt.</p>
+        </section>
+        <section id="events">
+            <h2>Nuvarande Arrangemangs</h2>
+            <div class="event-list" id="eventList">
+            </div>
+        </section>
+        <section id="booking">
+            <h2>Boka Arrangemang</h2>
+            <form id="eventForm">
+                <div>
+                    <label for="bName">Besökare Namn</label>
+                    <input id="bName" name="Bname" type="text">
+                </div>
+                <div>
+                    <label for="bEmail">Besökare Email</label>
+                    <input id="bEmail" name="bEmail" type="email">
+                </div>
+                <div>
+                    <label for="bPhone">Besökare Telefon Nummer</label>
+                    <input type="tel" id="bPhone" name="bPhone" pattern="[0-9]{3}-[0-9]{3}-[0-9]{2}-[0-9]{2}">
+                </div>
+              
+                <div>
+                    <label for="bEvent">Välj Event</label>
+                    <select name="bEvent" id="bEvent">
+                        <option value="1">Jazz Concert</option>
+                        <option value="2">Rock Concert</option>
+                        <option value="3">Höstcupen i Fotboll</option>
+                    </select>
+                </div>
+                <button type="submit">Boka</button>
+            </form>
+            <p id="formFeedback" role="status" aria-live="polite"></p>
+        </section>
+        
+    </main>
+    <footer>
+
+    </footer>
+</body>
+</html>

@@ -80,24 +80,23 @@ function displayData(eventData) {
         });
 
         let eventCard = document.createElement("article");
+        eventCard.classList.add("event-card");
         eventCard.innerHTML = 
         `
-                <article class="event-card">
-                    <h3>${event.title}</h3>
-                    <p>${event.description}</p>
-                    <img src="${event.eventImg}">
-                    <details open>
-                        <summary>Details</summary>
-                        <ul>
-                            <li>Datum: ${date}</li>
-                            <li>Tid: ${time}</li>
-                            <li>Arrangör: ${event.organizer}</li>
-                            <li>Kategori: ${event.category}</li>
-                            <li>Plats: ${event.venue}</li>
-                        </ul>
-                    </details>
-                    <a href="#booking">Boka här</a>
-                </article>
+            <h3>${event.title}</h3>
+            <p>${event.description}</p>
+            <img src="${event.eventImg}">
+            <details open>
+                <summary>Details</summary>
+                <ul>
+                    <li>Datum: ${date}</li>
+                    <li>Tid: ${time}</li>
+                    <li>Arrangör: ${event.organizer}</li>
+                    <li>Kategori: ${event.category}</li>
+                    <li>Plats: ${event.venue}</li>
+                </ul>
+            </details>
+            <a href="#booking">Boka här</a>
         `
         eventList.appendChild(eventCard)
     });

@@ -32,7 +32,7 @@
         <section id="events">
             <h2>Nuvarande Arrangemangs</h2>
             
-            <div>
+            <form id="filterForm">
                 <div>
                     <label for="filterStatus">Filter</label>
                     <input id="filterStatus" type="checkbox">
@@ -57,11 +57,11 @@
                     <label for="filterOrganizer">Organizer: </label>
                     <select name="filter_organizer" id="filterOrganizer">
                         <option value="">Choose Organizer</option>
-                        <option value="Music">Sunsdvall Jazzklubb</option>
-                        <option value="Sport">Nordic Events AB</option>
+                        <option value="Sunsdvall Jazzklubb">Sunsdvall Jazzklubb</option>
+                        <option value="Nordic Events AB">Nordic Events AB</option>
                     </select>
                 </div>
-            </div>
+            </form>
 
             <div class="event-list" id="eventList">
             </div>

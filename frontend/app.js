@@ -46,7 +46,8 @@ const eventList = document.querySelector("#eventList")
 const filterStatus = document.querySelector("#filterStatus");
 const filterLocation = document.querySelector("#filterLocation");
 const filterCategory = document.querySelector("#filterCategory");
-const filterOrganizer = document.querySelector("#filterCategory");
+const filterOrganizer = document.querySelector("#filterOrganizer");
+const filterForm = document.querySelector("#filterForm")
 
 let isFiltered = false;
 // Booking formulär
@@ -58,6 +59,7 @@ const eventSelect = document.querySelector("#bEvent");
 const feedback = document.querySelector("#formFeedback")
 
 function displayData(eventData) {
+    eventList.innerHTML = '';
     eventData.forEach(event => {
         const [date, time] = event.eventDate.split(" ");
         let eventCard = document.createElement("article");
@@ -72,7 +74,7 @@ function displayData(eventData) {
                         <ul>
                             <li>Datum: ${date}</li>
                             <li>Tid: ${time}</li>
-                            <li>Arrangör: ${event.eventOrganizer}}</li>
+                            <li>Arrangör: ${event.eventOrganizer}</li>
                             <li>Kategori: ${event.eventCategory}</li>
                             <li>Plats: ${event.eventLocation}</li>
                         </ul>
@@ -82,6 +84,13 @@ function displayData(eventData) {
         `
         eventList.appendChild(eventCard)
     });
+}
+
+function displayError(message) {
+    eventList.innerHTML = '';
+    let errorMessage = document.createElement("p");
+    errorMessage.textContent = message;
+    eventList.appendChild(errorMessage)
 }
 
 function filterData(eventData, filter) {
@@ -95,14 +104,26 @@ function filterData(eventData, filter) {
 }
 
 function loadData() {
-    if(isFiltered === true) {
-        displayData(filterData(eventData, {location: "Sundsvall", category: "Music"}))
+    console.log(filterStatus.checked)
+    if(filterStatus.checked === true) {
+        console.log("running filter")
+        console.log(filterLocation.value, filterCategory.value, filterOrganizer.value)
+        
+        let filterDataResult = filterData(eventData, {location: filterLocation.value, category: filterCategory.value, organizer: filterOrganizer.value})
+        if (filterDataResult.length) {
+            console.log("running filter thing")
+            displayData(filterDataResult)
+        } else {
+            displayError("Kunde inte hitta några event med dessa filter")
+        }
+
+        console.log(filterDataResult)
+        
     } else {
         displayData(eventData);
     }
 }
 
-loadData();
 
 
 
@@ -126,3 +147,5 @@ form.addEventListener("submit", event => {
     feedback.classList.add("success");
     feedback.classList.remove("error");
 });
+
+filterForm.addEventListener("input", loadData);

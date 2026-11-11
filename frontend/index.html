@@ -18,11 +18,6 @@
                 <li><a href="#booking">Boka Arrangemang</a></li>
             </ul>
         </nav>
-        <form>
-            <input type="search" name="" id="">
-            <button type="submit">Sök</button>
-        </form>
-        
     </header>
     <main>
         <section id="about" class="about">
@@ -35,7 +30,13 @@
         </section>
         <section id="events">
             <h2>Nuvarande Arrangemangs</h2>
-            
+            <section class="search-section">
+            <form class="search-form">
+                <input type="search" id="searchinput" placeholder="Sök evenemang">
+                <ul id="suggestionList"></ul>
+                <button type="submit">Sök</button>
+            </form>
+        </section>
             <form id="filterForm">
                 <div>
                     <label for="filterStatus">Filter</label>

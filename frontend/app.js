@@ -149,3 +149,71 @@ form.addEventListener("submit", event => {
 });
 
 filterForm.addEventListener("input", loadData);
+
+// Sök Funktion
+
+const searchInput = document.querySelector("#searchinput");
+const suggestionList = document.querySelector("#suggestionList");
+
+function showSuggestions(searchWord) {
+    suggestionList.innerHTML = "";
+
+    if (searchWord === "") {
+        suggestionList.style.display = "none";
+        return;
+    }
+
+    const matches = eventData.filter(function (event) {
+        return event.eventTitle.toLowerCase().includes(searchWord);
+    });
+
+    matches.forEach(function (event) {
+        suggestionList.innerHTML += `<li>${event.eventTitle}</li>`;
+    });
+
+    suggestionList.style.display = "block";
+}
+
+function showFilteredEvents(searchWord) {
+    const filtered = eventData.filter(function (event) {
+        return event.eventTitle.toLowerCase().includes(searchWord);
+    });
+
+    if (filtered.length === 0) {
+        eventList.innerHTML = "<p>Inga evenemang hittades.</p>";
+    } else {
+        displayData(filtered);
+    }   
+}
+
+// Typing:
+searchInput.addEventListener("input", function () {
+    showSuggestions(searchInput.value.toLowerCase());
+});
+searchInput.addEventListener("focus", function() {
+    showAllSuggestions();
+});
+
+function showAllSuggestions() {
+    suggestionList.innerHTML = "";
+    eventData.forEach(function (event) {
+        suggestionList.innerHTML += `<li><span>${event.eventTitle}</span><br> ${event.eventCategory}</li>`;
+    });
+    suggestionList.style.display = "block";
+}
+
+// Sök button
+const searchForm = document.querySelector(".search-form");
+searchForm.addEventListener("submit", function (event) {
+    event.preventDefault();
+    showSuggestions("");
+    showFilteredEvents(searchInput.value.toLowerCase());
+});
+
+// click
+suggestionList.addEventListener("click", function (event) {
+    const clickedTitle = event.target.closest("li").querySelector("span").textContent;
+    searchInput.value = clickedTitle;
+    showSuggestions("");
+    showFilteredEvents(clickedTitle.toLowerCase());
+});

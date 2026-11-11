@@ -79,4 +79,28 @@ nej, det gankse klart och alla är med på banan
 
 ### Förändring i planen eller tavlan
 vid föra träff gjorde vi lite små föränringar i tavlan och om strukturera planen så att den passar vår back och frontend lite mera.
+_____________________________________________________
+## Daily Scrum – Datum 2026-11-11
 
+### #Sprintmål Framsteg
+- **Simon:** Sökfunktion, filter och kategorisering fungerar. Ska kopplas till HTML.
+- **Doan:** Arbetat med bokningsfunktionen. Behöver granskas gemensamt.
+- **Mark:** Arbetat med sökfunktionen och felmeddelanden när inga evenemang hittas.
+
+### #DagensMål
+- Implementera Fetch API i EventFlow.
+- Testa funktionaliteten och säkerställa att alla förstår lösningen.
+
+### #Finns hinder kring API, JSON eller datagränser?
+- Osäkerhet kring uppgiftens tolkning.
+- Eventuella problem med datahämtning.
+- Risk för tidsbrist.
+
+### #Vem behöver hjälp eller review?
+- Alla i teamet behöver granska och testa implementationen tillsammans.
+
+### #API
+- API-storyn finns redan i projektplaneringen och prioriteras nu.
+
+### #Förändring i planen eller tavlan
+- Fokus ligger på Fetch API och integrationen i EventFlow.

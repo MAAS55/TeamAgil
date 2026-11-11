@@ -30,10 +30,36 @@ let eventData =
       eventCategory: "Sport",
       eventImg: "./images/omar-ramadan-eEhOyEtBGMQ-unsplash.jpg"
     },
+    {
+      eventId: 4,
+      eventTitle: "Höstcupen i Fotboll",
+      eventDesc: "Lokal fotbollsturnering för juniorer",
+      eventLocation: "Sundsvall",
+      eventDate: "2026-11-12 14:00",
+      eventOrganizer: "Nordic Events AB",
+      eventCategory: "Sport",
+      eventImg: "./images/omar-ramadan-eEhOyEtBGMQ-unsplash.jpg"
+    },
   ];
 
 const eventList = document.querySelector("#eventList")
-function loadAllData(eventData) {
+const filterStatus = document.querySelector("#filterStatus");
+const filterLocation = document.querySelector("#filterLocation");
+const filterCategory = document.querySelector("#filterCategory");
+const filterOrganizer = document.querySelector("#filterOrganizer");
+const filterForm = document.querySelector("#filterForm")
+
+let isFiltered = false;
+// Booking formulär
+const form = document.querySelector("#eventForm");
+const nameInput = document.querySelector("#bName");
+const emailInput = document.querySelector("#bEmail");
+const phoneInput = document.querySelector("#bPhone");
+const eventSelect = document.querySelector("#bEvent");
+const feedback = document.querySelector("#formFeedback")
+
+function displayData(eventData) {
+    eventList.innerHTML = '';
     eventData.forEach(event => {
         const [date, time] = event.eventDate.split(" ");
         let eventCard = document.createElement("article");
@@ -48,7 +74,7 @@ function loadAllData(eventData) {
                         <ul>
                             <li>Datum: ${date}</li>
                             <li>Tid: ${time}</li>
-                            <li>Arrangör: ${event.eventOrganizer}}</li>
+                            <li>Arrangör: ${event.eventOrganizer}</li>
                             <li>Kategori: ${event.eventCategory}</li>
                             <li>Plats: ${event.eventLocation}</li>
                         </ul>
@@ -60,15 +86,46 @@ function loadAllData(eventData) {
     });
 }
 
-loadAllData(eventData);
+function displayError(message) {
+    eventList.innerHTML = '';
+    let errorMessage = document.createElement("p");
+    errorMessage.textContent = message;
+    eventList.appendChild(errorMessage)
+}
 
-// Booking formulär
-const form = document.querySelector("#eventForm");
-const nameInput = document.querySelector("#bName");
-const emailInput = document.querySelector("#bEmail");
-const phoneInput = document.querySelector("#bPhone");
-const eventSelect = document.querySelector("#bEvent");
-const feedback = document.querySelector("#formFeedback")
+function filterData(eventData, filter) {
+    return eventData.filter(element => {
+        const matchesCategory = !filter.category || element.eventCategory === filter.category;
+        const matchesLocation = !filter.location || element.eventLocation === filter.location;
+        const matchesOrganizer = !filter.organizer || element.eventOrganizer === filter.organizer;
+
+        return matchesCategory && matchesLocation && matchesOrganizer;
+    });
+}
+
+function loadData() {
+    console.log(filterStatus.checked)
+    if(filterStatus.checked === true) {
+        console.log("running filter")
+        console.log(filterLocation.value, filterCategory.value, filterOrganizer.value)
+        
+        let filterDataResult = filterData(eventData, {location: filterLocation.value, category: filterCategory.value, organizer: filterOrganizer.value})
+        if (filterDataResult.length) {
+            console.log("running filter thing")
+            displayData(filterDataResult)
+        } else {
+            displayError("Kunde inte hitta några event med dessa filter")
+        }
+
+        console.log(filterDataResult)
+        
+    } else {
+        displayData(eventData);
+    }
+}
+
+
+
 
 form.addEventListener("submit", event => {
     event.preventDefault();
@@ -90,3 +147,5 @@ form.addEventListener("submit", event => {
     feedback.classList.add("success");
     feedback.classList.remove("error");
 });
+
+filterForm.addEventListener("input", loadData);

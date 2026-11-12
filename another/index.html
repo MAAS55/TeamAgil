@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EventFlow</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+   <script src="app.js" defer>
+   </script>
+<body>
+    <header>
+        <h1>Event Flow</h1>
+        <nav class="nav-bar">
+            <ul>
+                <li><a href="#about">Om Event Flow</a></li>
+                <li><a href="#events">Visa Arrangemangs</a></li>
+                <li><a href="#booking">Boka Arrangemang</a></li>
+            </ul>
+            <form>
+                <input type="search" name="" id="">
+                <button type="submit">Sök</button>
+            </form>
+        </nav>
+        
+    </header>
+    <main>
+        <section id="about">
+            <h2>Upptäck och upplev det som händer nära dig!</h2>
+            <p>Eventflow samlar alla lokala evenemang från kommuner och föreningar på ett ställe. Hitta dina favoriter, se var det händer och säkra din plats direkt.</p>
+        </section>
+        <section id="events">
+            <h2>Nuvarande Arrangemangs</h2>
+            <div class="event-list">
+                <article class="event-card">
+                    <h3>Jazz Concert</h3>
+                    <p>Live jazz performance</p>
+                    <img src="./images/filip-mishevski-TP4VTvjxEmo-unsplash.jpg">
+                <details open>
+                    
+                </article>
+
+                    <dialog id="dialog">
+
+                        <form method="dialog" class="close-form">
+                            <button type="submit" class="close-button">✕</button>
+                        </form>
+
+                        <section class="event-header">
+
+                            <img src="./images/filip-mishevski-TP4VTvjxEmo-unsplash.jpg"
+                                alt="Jazz Concert">
+
+                            <span class="tag">Music</span>
+
+                            <h2>Jazz Concert</h2>
+
+                            <p>Live jazz performance med Sundsvalls bästa musiker.</p>
+
+                        </section>
+
+
+                        <section class="info-grid">
+
+                            <div class="info-box">
+                                <span class="label">Datum</span>
+                                <strong>12 oktober 2026</strong>
+                            </div>
+
+                            <div class="info-box">
+                                <span class="label">Tid</span>
+                                <strong>19:00</strong>
+                            </div>
+
+                            <div class="info-box">
+                                <span class="label">Plats</span>
+                                <strong>Kulturmagasinet, Sundsvall</strong>
+                            </div>
+
+                            <div class="info-box">
+                                <span class="label">Pris</span>
+                                <strong>250 kr</strong>
+                            </div>
+                            <div id="booking-button">
+                            </div>
+
+                        </section>
+
+
+                        <section class="description">
+
+                            <h3>Om eventet</h3>
+
+                            <p>
+                                En kväll av klassisk jazz med Sundsvalls bästa musiker.
+                                Trio med piano, kontrabas och trummor.
+                                Baren är öppen från 18:00. Åldersgräns 16 år.
+                            </p>
+
+                            <p><strong>Arrangör:</strong> Sundsvall Jazzklubb</p>
+
+                        </section>
+
+
+                        <section class="map">
+
+                            <h3>Hitta hit</h3>
+
+                            <iframe
+                                src="https://www.google.com/maps?q=Kulturmagasinet+Sundsvall&output=embed"
+                                width="100%"
+                                height="250"
+                                style="border:0;"
+                                loading="lazy">
+                            </iframe>
+
+                        </section>
+
+                    </dialog>
+                  
+              

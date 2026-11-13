@@ -8,6 +8,10 @@ const ticketSelect = document.querySelector("#bTicket");
 const dateInput = document.querySelector("#bDate");
 const placeSelect = document.querySelector("#bPlace");
 
+// Receipt
+const nameDisplay = document.querySelector("#receipt-info");
+
+// Feedback
 const feedback = document.querySelector("#formFeedback")
 
 form.addEventListener("submit", event => {
@@ -32,4 +36,18 @@ form.addEventListener("submit", event => {
     feedback.textContent = "Tack för din bokning!";
     feedback.classList.add("success");
     feedback.classList.remove("error");
+
+    // Receipt / Sparad data
+    const receipt = {
+        name: name,
+        email: email,
+        phone: phone,
+        eventSelects: eventSelects,
+        ticket: ticket,
+        date: date,
+        place: place
+    };
+    localStorage.setItem('bookingData', JSON.stringify(receipt));
+
+    window.location.href = 'Receipt/Receipt.html';
 });

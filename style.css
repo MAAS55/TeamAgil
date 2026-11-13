@@ -1,0 +1,146 @@
+.search-section {
+    display: flex;
+    justify-content: center;
+    padding:1rem;
+  
+}
+
+.search-form {
+    position: relative;
+    display: flex;
+    width: min(90%, 800px);
+    max-width: 800px;
+    border-radius: 15px;
+    border: solid;
+    
+}
+
+.search-form input {
+    flex: 1;
+    padding: 1rem 1.5rem;
+    font-size: 1.2rem;
+    border: 5px solid rgb(73, 27, 148);
+    border-radius: 15px;
+}
+
+.search-form button {
+    padding: 1rem 1.5rem;
+    border: 2px solid rgb(73, 27, 148);
+    border-left: none;
+    border-radius: 9px ;
+    background: white;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+#suggestionList {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    width: 100%;
+    background: white;
+    color: #000000;
+   
+    border-radius: 15px;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    z-index: 10;
+}
+
+#suggestionList li {
+    padding: 0.5rem 1.5rem;
+    cursor: pointer;
+}
+
+.header {
+    background-color: rgb(73, 27, 148);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding-left: 2rem;
+    padding-right: 2rem;
+}
+.header h1 {
+    color: white;
+}
+.nav-bar {
+    padding: 1rem;
+}
+.nav-bar ul li a {
+    color: white;
+    padding: 1rem;
+    font-weight: bold;
+}
+
+.header button {
+    background-color: white;
+    border: none;
+    padding: 0.5rem 1rem;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    background-color: #010026;
+    color: #ffffff;
+    padding: 0;
+    margin: 0;
+
+}
+
+.event-list {
+    padding: .5rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;;
+    gap: 1rem;
+}
+
+
+.event-card img {
+    width: 100%;
+}
+
+.event-card {
+    border: 2px solid #242424;
+    border-radius: 10px;
+    background-color: #FAFAFA;
+    color: #000;
+    padding: 0.5rem;
+    max-width: 20rem;
+    flex: 1;
+}
+
+.nav-bar ul {
+    list-style: none;
+    padding: 0;
+    display: flex;
+    gap: 0.5rem;
+    flex-direction: column;
+}
+
+.nav-bar ul li a {
+    text-decoration: none;
+}
+
+#booking form div label {
+    padding: 0.2rem 0;
+    display: block;
+}
+
+#booking form button {
+    margin: 0.5rem 0;
+}
+
+@media screen and (min-width: 800px) {
+    .event-list {
+        flex-direction: row;
+        flex-wrap: wrap;
+    }
+
+    .nav-bar ul {
+        flex-direction: row;
+    }
+}

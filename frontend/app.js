@@ -142,10 +142,10 @@ function addFilterOption(eventData) {
         filterCategory.appendChild(option)
        } 
 
-       if (!filterOptions.location.includes(element.venue)) {
-        filterOptions.location.push(city)
+       if (!filterOptions.location.includes(element.city)) {
+        filterOptions.location.push(element.city)
         let option = document.createElement('option');
-        option.textContent = city
+        option.textContent = element.city
         filterLocation.appendChild(option)
        }
 
@@ -159,10 +159,10 @@ function addFilterOption(eventData) {
 }
 
 function transformRawData(rawFetchData) {
-    for (const data of rawFetchData) {
-        let address = rawFetchData.venue.split(",");
-    
-        const eventDateObj = new Date(rawFetchData.startsAt);
+
+    let fetchData = rawFetchData.map((element) => {
+        let address = element.venue.split(",");
+        const eventDateObj = new Date(element.startsAt);
             // Output: "12 dec. 2026" (or "12 december 2026" if month: 'long')
         const date = eventDateObj.toLocaleDateString('sv-SE', {
             year: 'numeric',
@@ -175,17 +175,27 @@ function transformRawData(rawFetchData) {
             hour: '2-digit',
             minute: '2-digit'
         });
-    }
-    
-    
-    
+        return({
+            id: element.id,
+            title: element.title,
+            description: element.description,
+            category: element.category,
+            organizer: element.organizer,
+            startDate: date,
+            startTime: time,
+            city: address[1],
+            venue: address[0]
+        });
+    })
+    return fetchData;
 }
 
 async function loadData() {
     console.log("running loadData")
     let rawFetchData = await fetchEventData(apiUrl);
-    let fetchData = transformRawData(rawFetchData); 
-    
+    console.log(rawFetchData)
+    let fetchData = transformRawData(rawFetchData);
+    console.log(fetchData);
     addFilterOption(fetchData);
 
     if(filterStatus.checked === true) {        

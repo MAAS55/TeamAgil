@@ -119,18 +119,78 @@ function filterData(eventData, filter) {
     });
 }
 
-async function loadData() {
+let filterOptions = 
+{
+    location: [],
+    category: [],
+    organizer: []
+} 
+function addFilterOption(eventData) {
+    if (filterOptions.category.length > 0) return;
 
-    let fetchData = await fetchEventData(apiUrl);
-    console.log(fetchData);
-
-    if(filterStatus.checked === true) {
-        console.log("running filter")
-        console.log(filterLocation.value, filterCategory.value, filterOrganizer.value)
+    filterCategory.innerHTML = `<option value="">Choose Category</option>`;
+    filterLocation.innerHTML = `<option value="">Choose Location</option>`;
+    filterOrganizer.innerHTML = `<option value="">Choose Organizer</option>`;
+    
+    for (const element of eventData) {
+       
+        if (!filterOptions.category.includes(element.category)) {
+        filterOptions.category.push(element.category)
         
+        let option = document.createElement('option');
+        option.textContent = element.category
+        filterCategory.appendChild(option)
+       } 
+
+       if (!filterOptions.location.includes(element.venue)) {
+        filterOptions.location.push(city)
+        let option = document.createElement('option');
+        option.textContent = city
+        filterLocation.appendChild(option)
+       }
+
+       if (!filterOptions.organizer.includes(element.organizer)) {
+        filterOptions.organizer.push(element.organizer)
+        let option = document.createElement('option');
+        option.textContent = element.organizer
+        filterOrganizer.appendChild(option)
+       }
+    }
+}
+
+function transformRawData(rawFetchData) {
+    for (const data of rawFetchData) {
+        let address = rawFetchData.venue.split(",");
+    
+        const eventDateObj = new Date(rawFetchData.startsAt);
+            // Output: "12 dec. 2026" (or "12 december 2026" if month: 'long')
+        const date = eventDateObj.toLocaleDateString('sv-SE', {
+            year: 'numeric',
+            month: 'short',
+            day: 'numeric'
+        });
+
+        // Output: "10:30"
+        const time = eventDateObj.toLocaleTimeString('sv-SE', {
+            hour: '2-digit',
+            minute: '2-digit'
+        });
+    }
+    
+    
+    
+}
+
+async function loadData() {
+    console.log("running loadData")
+    let rawFetchData = await fetchEventData(apiUrl);
+    let fetchData = transformRawData(rawFetchData); 
+    
+    addFilterOption(fetchData);
+
+    if(filterStatus.checked === true) {        
         let filterDataResult = filterData(fetchData, {location: filterLocation.value, category: filterCategory.value, organizer: filterOrganizer.value})
         if (filterDataResult.length) {
-            console.log("running filter thing")
             displayData(filterDataResult)
         } else {
             displayError("Kunde inte hitta några event med dessa filter")

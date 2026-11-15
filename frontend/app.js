@@ -1,46 +1,4 @@
-let eventData = 
-[
-    {
-      eventId: 1,
-      eventTitle: "Jazz Concert",
-      eventDesc: "Live jazz performance",
-      eventLocation: "Sundsvall",
-      eventDate: "2026-10-12 12:00",
-      eventOrganizer: "Sunsdvall Jazzklubb",
-      eventCategory: "Music",
-      eventImg: "./images/filip-mishevski-TP4VTvjxEmo-unsplash.jpg"
-    },
-    {
-      eventId: 2,
-      eventTitle: "Rock Concert",
-      eventDesc: "Kizz live band",
-      eventLocation: "Sundsvall",
-      eventDate: "2026-11-05 05:00",
-      eventOrganizer: "Nordic Events AB",
-      eventCategory: "Music",
-      eventImg: "./images/roberto-rendon--Ma-aFuivjs-unsplash.jpg"
-    },
-    {
-      eventId: 3,
-      eventTitle: "Höstcupen i Fotboll",
-      eventDesc: "Lokal fotbollsturnering för juniorer",
-      eventLocation: "Stockholm",
-      eventDate: "2026-11-12 14:00",
-      eventOrganizer: "Nordic Events AB",
-      eventCategory: "Sport",
-      eventImg: "./images/omar-ramadan-eEhOyEtBGMQ-unsplash.jpg"
-    },
-    {
-      eventId: 4,
-      eventTitle: "Höstcupen i Fotboll",
-      eventDesc: "Lokal fotbollsturnering för juniorer",
-      eventLocation: "Sundsvall",
-      eventDate: "2026-11-12 14:00",
-      eventOrganizer: "Nordic Events AB",
-      eventCategory: "Sport",
-      eventImg: "./images/omar-ramadan-eEhOyEtBGMQ-unsplash.jpg"
-    },
-  ];
+let eventData;
 
 const apiUrl = "http://localhost:5043/api/events"
 
@@ -63,22 +21,6 @@ const feedback = document.querySelector("#formFeedback")
 function displayData(eventData) {
     eventList.innerHTML = '';
     eventData.forEach(event => {
-        //const [date, time] = event.eventDate.split(" ");
-
-        const eventDateObj = new Date(event.startsAt);
-        // Output: "12 dec. 2026" (or "12 december 2026" if month: 'long')
-        const date = eventDateObj.toLocaleDateString('sv-SE', {
-        year: 'numeric',
-        month: 'short',
-        day: 'numeric'
-        });
-
-        // Output: "10:30"
-        const time = eventDateObj.toLocaleTimeString('sv-SE', {
-        hour: '2-digit',
-        minute: '2-digit'
-        });
-
         let eventCard = document.createElement("article");
         eventCard.classList.add("event-card");
         eventCard.innerHTML = 
@@ -89,8 +31,8 @@ function displayData(eventData) {
             <details open>
                 <summary>Details</summary>
                 <ul>
-                    <li>Datum: ${date}</li>
-                    <li>Tid: ${time}</li>
+                    <li>Datum: ${event.startDate}</li>
+                    <li>Tid: ${event.startTime}</li>
                     <li>Arrangör: ${event.organizer}</li>
                     <li>Kategori: ${event.category}</li>
                     <li>Plats: ${event.venue}</li>
@@ -110,10 +52,12 @@ function displayError(message) {
 }
 
 function filterData(eventData, filter) {
+    console.log("Running filterData")
+    console.log(eventData, filter)
     return eventData.filter(element => {
-        const matchesCategory = !filter.category || element.eventCategory === filter.category;
-        const matchesLocation = !filter.location || element.eventLocation === filter.location;
-        const matchesOrganizer = !filter.organizer || element.eventOrganizer === filter.organizer;
+        const matchesCategory = !filter.category || element.category === filter.category;
+        const matchesLocation = !filter.location || element.city === filter.location;
+        const matchesOrganizer = !filter.organizer || element.organizer === filter.organizer;
 
         return matchesCategory && matchesLocation && matchesOrganizer;
     });
@@ -183,7 +127,7 @@ function transformRawData(rawFetchData) {
             organizer: element.organizer,
             startDate: date,
             startTime: time,
-            city: address[1],
+            city: address[1].trim(),
             venue: address[0]
         });
     })
@@ -195,6 +139,7 @@ async function loadData() {
     let rawFetchData = await fetchEventData(apiUrl);
     console.log(rawFetchData)
     let fetchData = transformRawData(rawFetchData);
+    eventData = fetchData;
     console.log(fetchData);
     addFilterOption(fetchData);
 
@@ -273,19 +218,21 @@ function showSuggestions(searchWord) {
     }
 
     const matches = eventData.filter(function (event) {
-        return event.eventTitle.toLowerCase().includes(searchWord);
+        console.log(`showSuggestions: ${event}`)
+        return event.title.toLowerCase().includes(searchWord);
     });
 
     matches.forEach(function (event) {
-        suggestionList.innerHTML += `<li>${event.eventTitle}</li>`;
+        suggestionList.innerHTML += `<li>${event.title}</li>`;
     });
 
     suggestionList.style.display = "block";
 }
 
 function showFilteredEvents(searchWord) {
+    console.log("running ShowFilteredEvents")
     const filtered = eventData.filter(function (event) {
-        return event.eventTitle.toLowerCase().includes(searchWord);
+        return event.title.toLowerCase().includes(searchWord);
     });
 
     if (filtered.length === 0) {
@@ -306,7 +253,7 @@ searchInput.addEventListener("focus", function() {
 function showAllSuggestions() {
     suggestionList.innerHTML = "";
     eventData.forEach(function (event) {
-        suggestionList.innerHTML += `<li><span>${event.eventTitle}</span><br> ${event.eventCategory}</li>`;
+        suggestionList.innerHTML += `<li><span>${event.title}</span><br> ${event.category}</li>`;
     });
     suggestionList.style.display = "block";
 }

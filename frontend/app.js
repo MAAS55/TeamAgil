@@ -1,6 +1,6 @@
 let eventData;
 
-const apiUrl = "http://localhost:5043/api/events"
+const apiUrl = "http://localhost:5043/api/events/"
 
 const eventList = document.querySelector("#eventList")
 const filterStatus = document.querySelector("#filterStatus");
@@ -35,7 +35,7 @@ function displayData(eventData) {
                     <li>Tid: ${event.startTime}</li>
                     <li>Arrangör: ${event.organizer}</li>
                     <li>Kategori: ${event.category}</li>
-                    <li>Plats: ${event.venue}</li>
+                    <li>Plats: ${event.venue}, ${event.city}</li>
                 </ul>
             </details>
             <a href="#booking">Boka här</a>
@@ -44,7 +44,7 @@ function displayData(eventData) {
     });
 }
 
-function displayError(message) {
+function displayMessage(message) {
     eventList.innerHTML = '';
     let errorMessage = document.createElement("p");
     errorMessage.textContent = message;
@@ -135,31 +135,37 @@ function transformRawData(rawFetchData) {
 }
 
 async function loadData() {
-    console.log("running loadData")
-    let rawFetchData = await fetchEventData(apiUrl);
-    console.log(rawFetchData)
-    let fetchData = transformRawData(rawFetchData);
-    eventData = fetchData;
-    console.log(fetchData);
-    addFilterOption(fetchData);
+    try {
+            let rawFetchData = await fetchEventData(apiUrl);
+            console.log(rawFetchData)
+            if (rawFetchData.length > 0) {
+                let fetchData = transformRawData(rawFetchData);
+                eventData = fetchData;
+                addFilterOption(fetchData);
 
-    if(filterStatus.checked === true) {        
-        let filterDataResult = filterData(fetchData, {location: filterLocation.value, category: filterCategory.value, organizer: filterOrganizer.value})
-        if (filterDataResult.length) {
-            displayData(filterDataResult)
-        } else {
-            displayError("Kunde inte hitta några event med dessa filter")
-        }
+                if(filterStatus.checked === true) {        
+                    let filterDataResult = filterData(fetchData, {location: filterLocation.value, category: filterCategory.value, organizer: filterOrganizer.value})
+                    if (filterDataResult.length) {
+                        displayData(filterDataResult)
+                    } else {
+                        displayMessage("Kunde inte hitta några event med dessa filter")
+                    }
 
-        
-    } else {
-        displayData(fetchData);
+                } else {
+                    displayData(fetchData);
+                }
+            } else {
+                displayMessage("Det finns inga evenemang att ladda in")
+            }
+    } catch (error) {
+        displayMessage("Ett fel uppstod vid hämtning av data")
     }
+
 }
 
 async function fetchEventData(url) {
-    console.log("running fetch event")
     try {
+    displayMessage("Loading data... ")
     const response = await fetch(url, {
       method: 'GET', // 'POST', 'PUT', 'DELETE', etc.
       headers: {
@@ -167,9 +173,8 @@ async function fetchEventData(url) {
       }
     });
 
-    // Check if HTTP status is in the 200–299 range
-    if (!response.ok) {
-      throw new Error(`HTTP error! Status: ${response.status}`);
+    if (!response.ok || response.status === 404) {
+      throw new Error(`HTTP error! Status: ${response.status}`);    
     }
 
     const data = await response.json();

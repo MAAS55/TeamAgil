@@ -62,6 +62,30 @@
             <p id="formFeedback" role="status" aria-live="polite"></p>
             <p id="api-status" role="status"></p>
         </section>
+        <section class="popup-container" id="popup-container">
+            <section class="popup">
+                <div class="popup-content">
+                    
+                    <form class="popup-form">
+                        <h1>Bekräfta din bokning</h1>
+                        <div>
+                            <p id="c-name"></p>
+                            <p id="c-email"></p>
+                            <p id="c-phone"></p>
+                            <p id="c-event"></p>
+                            <p id="c-ticket"></p>
+                            <p id="c-date"></p>
+                            <p id="c-place"></p>
+                        </div>
+                        <div class="popup-button" id="popup-button">
+                            <button class="close-button" id="close-button" type="button" onclick="cancelConfirm()">Avbryts</button>
+                            <button class="popup-confirm" id="popup-confirm" type="button" onclick="acceptConfirm()">confirm</button>
+                        </div>
+                    </form>
+                </div>
+            </section>
+        </section>
+
     </main>
     <footer>
         <p>2024 EventFlow. All rights reserved.</p>

@@ -5,6 +5,7 @@ const apiPlaceList = document.querySelector("#bPlace");
 
 const apiStatus = document.querySelector("#api-status");
 
+
 // Fetch data
 async function fetchEventData(url) {
 
@@ -65,6 +66,15 @@ async function fetchEventData(url) {
 
 fetchEventData();
 
+// Bekräfta formulär
+const confirmName = document.getElementById("c-name");
+const confirmEmail = document.getElementById("c-email");
+const confirmPhone = document.getElementById("c-phone");
+const confirmEvent = document.getElementById("c-event");
+const confirmTicket = document.getElementById("c-ticket");
+const confirmDate = document.getElementById("c-date");
+const confirmPlace = document.getElementById("c-place");
+
 // Booking formulär
 const form = document.querySelector("#eventForm");
 const nameInput = document.querySelector("#bName");
@@ -93,6 +103,9 @@ form.addEventListener("submit", event => {
     const date = dateInput.value;
     const place = placeSelect.value;
 
+    // Popup
+    const popup = document.querySelector("#popup-container");
+
     if(name === "" || email === "" || phone === "" || eventSelects === "" || ticket === "" || date === "" || place === "") {
         feedback.textContent = "Vänligen fyll i alla fält.";
         feedback.classList.add("error");
@@ -116,5 +129,28 @@ form.addEventListener("submit", event => {
     };
     localStorage.setItem('bookingData', JSON.stringify(receipt));
 
-    window.location.href = 'Receipt/Receipt.html';
+    popup.classList.add("show-popup")
+        
+    confirmName.textContent = name;
+    confirmEmail.textContent = email;  
+    confirmPhone.textContent = phone;
+    confirmEvent.textContent = eventSelects;
+    confirmTicket.textContent = ticket;
+    confirmDate.textContent = date;
+    confirmPlace.textContent = place;
 });
+
+// Popup
+const close = document.querySelector("#close-button");
+const open = document.querySelector("#open-button");
+const popup = document.querySelector("#popup-container");
+// Aktivera popup
+
+function cancelConfirm(){
+    console.log("CALAKASDKAD");
+    popup.classList.remove("show-popup");
+}
+function acceptConfirm(){
+    console.log("link worjasadapnasd");
+    window.location.href = 'Receipt/Receipt.html';
+}

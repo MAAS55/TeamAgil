@@ -111,6 +111,20 @@ body {
     padding: 0.5rem;
     max-width: 20rem;
     flex: 1;
+    
+}
+#eventDialog{
+    border: 2px solid orange;
+    border-radius: 12px;
+    padding: 1.5rem;
+    width: min(90%, 800px);
+    max-width: 500px;
+    border-radius: 15px;
+}
+.dialog-content{
+    border: #ca1919;
+    background-color: #ffffff;
+    border-radius: 12px;
 }
 
 .nav-bar ul {
@@ -143,4 +157,67 @@ body {
     .nav-bar ul {
         flex-direction: row;
     }
+}
+#sundsvall {
+    max-width: 100%;
+    height: auto;
+}
+
+.hero {
+    background-image: url("image/sundsvall1.jpg");
+    display: flex;
+    background-size: cover;
+    background-position: center;
+    height: 60vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    color: white;
+}
+.organizer-row{
+    display:flex;
+    gap: 1rem;
+    justify-content:centent;
+}
+.organizer-card {
+    border: 2px solid #c82727;
+    background-color: #FAFAFA;
+    align-items: center;
+    display: grid;
+    color: #000;
+    border-radius: 12px;
+    padding: 1rem;
+    width: 200px;
+    text-align: center;
+}
+.feature {
+    border: 2px solid orange;
+    border-radius: 12px;
+    padding: 1rem;
+    background-color: #fffcfc;  
+    text-align: center;
+    color: #000;
+    
+}
+.feature {
+    border: 2px solid rgb(167, 27, 210);
+    border-radius: 12px;
+    padding: 1rem;
+    width: min(90% 800px);
+    
+}
+
+.feature-image {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.feature-image img {
+    border-radius: 12px;
+    width: min(90%, 800px);
+    max-width: 500px;
+    border-radius: 15px;
 }

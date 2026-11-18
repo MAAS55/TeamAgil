@@ -114,13 +114,17 @@ _____________________________________________________
 
 ### framsteg mot sprintmålet
 -**Doan:** Blir klart med alla acceptanskriterier i bokning formulär. Arbeta sedan med avbokning
+-**Simon** Arbetar med network get: status
+-**mark**  documentaktion och About page 
 
 
 ### arbete som riskerar att inte bli klart
--
+- ai kod granskning och sammnställning 
 
 ### blockerare, reviewköer och beroenden
-
+- Det mesta är klar vi måste bara dubble kolla vid senare tillfälle
 
 ### hjälp eller beslut som behövs
+.
 ### förändring i plan eller prioritet
+inga just nu

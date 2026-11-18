@@ -82,25 +82,45 @@ vid föra träff gjorde vi lite små föränringar i tavlan och om strukturera p
 _____________________________________________________
 ## Daily Scrum – Datum 2026-11-11
 
-### #Sprintmål Framsteg
+### Sprintmål Framsteg
 - **Simon:** Sökfunktion, filter och kategorisering fungerar. Ska kopplas till HTML.
 - **Doan:** Arbetat med bokningsfunktionen. Behöver granskas gemensamt.
 - **Mark:** Arbetat med sökfunktionen och felmeddelanden när inga evenemang hittas.
 
-### #DagensMål
+### DagensMål
 - Implementera Fetch API i EventFlow.
 - Testa funktionaliteten och säkerställa att alla förstår lösningen.
 
-### #Finns hinder kring API, JSON eller datagränser?
+### Finns hinder kring API, JSON eller datagränser?
 - Osäkerhet kring uppgiftens tolkning.
 - Eventuella problem med datahämtning.
 - Risk för tidsbrist.
 
-### #Vem behöver hjälp eller review?
+### Vem behöver hjälp eller review?
 - Alla i teamet behöver granska och testa implementationen tillsammans.
 
-### #API
+### API
 - API-storyn finns redan i projektplaneringen och prioriteras nu.
 
-### #Förändring i planen eller tavlan
+### Förändring i planen eller tavlan
 - Fokus ligger på Fetch API och integrationen i EventFlow.
+_____________________________________________________
+## Daily Scrum – Datum 2026-11-18
+
+### vad som är Done
+- **Simon:** Har integrera externt API.
+- **Doan:** Har arbetat i bokning funktionen.
+- **Mark:** Har gjort klart sökfunktionen.
+
+### framsteg mot sprintmålet
+-**Doan:** Blir klart med alla acceptanskriterier i bokning formulär. Arbeta sedan med avbokning
+
+
+### arbete som riskerar att inte bli klart
+-
+
+### blockerare, reviewköer och beroenden
+
+
+### hjälp eller beslut som behövs
+### förändring i plan eller prioritet

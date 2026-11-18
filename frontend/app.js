@@ -27,18 +27,7 @@ function displayData(eventData) {
         `
             <h3>${event.title}</h3>
             <p>${event.description}</p>
-            <img src="${event.eventImg}">
-            <details open>
-                <summary>Details</summary>
-                <ul>
-                    <li>Datum: ${event.startDate}</li>
-                    <li>Tid: ${event.startTime}</li>
-                    <li>Arrangör: ${event.organizer}</li>
-                    <li>Kategori: ${event.category}</li>
-                    <li>Plats: ${event.venue}, ${event.city}</li>
-                </ul>
-            </details>
-            <a href="#booking">Boka här</a>
+            <a href="#booking">Läs mer</a>
         `
         eventList.appendChild(eventCard)
     });
@@ -282,11 +271,37 @@ suggestionList.addEventListener("click", function (event) {
 
 // Event Popup
 const dialog = document.querySelector("#dialog");
-const eventcard = document.querySelectorAll(".event-card");
+
 function openDialog() {
   dialog.log(dialog.open ? "Dialog: open" : "Dialog: closed");
 }
 
+function renderDialog(id) {
+    let event = eventData.find(e => e.id === id);
+    const eventTitle = document.querySelector("#eventTitle");
+    const eventCategory = document.querySelector("#eventCategory");
+    const eventDate = document.querySelector("#eventDate");
+    const eventTime = document.querySelector("#eventTime");
+    const eventLocation = document.querySelector("#eventLocation");
+    const eventDesc = document.querySelector("#eventDesc");
+    const eventOrganizer = document.querySelector("#eventOrganizer");
+    const mapFrame = document.querySelector("#mapFrame");
+
+    eventTitle.textContent = event.title;
+    eventCategory.textContent = event.category
+    eventDate.textContent = event.startDate
+    eventTime.textContent = event.startTime
+    eventLocation.textContent = `${event.venue}, ${event.city}`
+    eventDesc.textContent = event.description
+    eventOrganizer.textContent = event.organizer
+    
+    mapFrame.src = `https://www.google.com/maps?q=${event.venue}+${event.city}&output=embed`
+    
+
+    dialog.showModal();
+}
+
+/*
 eventcard.forEach((card) => {
   card.addEventListener("click", () => {
     dialog.showModal();
@@ -305,3 +320,4 @@ button.type = "submit";
 button.textContent = "Boka";
 
 bookingButton.appendChild(button);
+*/

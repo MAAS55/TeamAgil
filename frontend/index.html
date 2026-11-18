@@ -101,32 +101,29 @@
         </form>
 
         <section class="event-header">
-            <img src="./images/filip-mishevski-TP4VTvjxEmo-unsplash.jpg"
-                alt="Jazz Concert">
-            <span class="tag">Music</span>
-            <h2>Jazz Concert</h2>
-            <p>Live jazz performance med Sundsvalls bästa musiker.</p>
+            <span class="tag" id="eventCategory">Music</span>
+            <h2 id="eventTitle"><!-- Event Title --></h2>
         </section>
 
         <section class="info-grid">
             <div class="info-box">
                 <span class="label">Datum</span>
-                <strong>12 oktober 2026</strong>
+                <strong id="eventDate"><!-- Event Date --></strong>
             </div>
 
             <div class="info-box">
                 <span class="label">Tid</span>
-                <strong>19:00</strong>
+                <strong id="eventTime"><!-- Event Time --></strong>
             </div>
 
             <div class="info-box">
                 <span class="label">Plats</span>
-                <strong>Kulturmagasinet, Sundsvall</strong>
+                <strong id="eventLocation"><!-- Event Location --></strong>
             </div>
 
             <div class="info-box">
                 <span class="label">Pris</span>
-                <strong>250 kr</strong>
+                <strong><!-- Event Price --></strong>
             </div>
             <div id="booking-button">
             </div>
@@ -136,19 +133,18 @@
 
         <section class="description">
             <h3>Om eventet</h3>
-            <p>
-                En kväll av klassisk jazz med Sundsvalls bästa musiker.
-                Trio med piano, kontrabas och trummor.
-                Baren är öppen från 18:00. Åldersgräns 16 år.
+            <p id="eventDesc">
+                <!-- Event Description -->
             </p>
-            <p><strong>Arrangör:</strong> Sundsvall Jazzklubb</p>
+            <p id="eventOrganizer"><strong>Arrangör:</strong> <!-- Event Organizer --></p>
         </section>
 
 
         <section class="map">
             <h3>Hitta hit</h3>
             <iframe
-                src="https://www.google.com/maps?q=Kulturmagasinet+Sundsvall&output=embed"
+                id="mapFrame"
+                src=""
                 width="100%"
                 height="250"
                 style="border:0;"

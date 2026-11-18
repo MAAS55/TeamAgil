@@ -8,7 +8,7 @@ const eventData = [
         eventDate: "2026-10-12 12:00",
         eventOrganizer: "Sundsvall Jazzklubb",
         eventCategory: "Music",
-        eventImg: "./image/filip-mishevski-TP4VTvjxEmo-unsplash.jpg"
+        eventImg: "./images/filip-mishevski-TP4VTvjxEmo-unsplash.jpg"
     },
     {
         eventId: 2,
@@ -18,7 +18,7 @@ const eventData = [
         eventDate: "2026-11-05 05:00",
         eventOrganizer: "Nordic Events AB",
         eventCategory: "Music",
-        eventImg: "./image/roberto-rendon--Ma-aFuivjs-unsplash.jpg"
+        eventImg: "./images/roberto-rendon--Ma-aFuivjs-unsplash.jpg"
     },
     {
         eventId: 3,
@@ -28,10 +28,13 @@ const eventData = [
         eventDate: "2026-11-12 14:00",
         eventOrganizer: "Nordic Events AB",
         eventCategory: "Sport",
-        eventImg: "./image/omar-ramadan-eEhOyEtBGMQ-unsplash.jpg"
+        eventImg: "./images/omar-ramadan-eEhOyEtBGMQ-unsplash.jpg"
     }
 ];
 
+// -----------------------------
+// 2. Grab the main elements
+// -----------------------------
 const eventList = document.querySelector("#eventList");
 const searchInput = document.querySelector("#searchinput");
 const suggestionList = document.querySelector("#suggestionList");
@@ -39,23 +42,23 @@ const searchForm = document.querySelector(".search-form");
 const dialog = document.querySelector("#eventDialog");
 const closeDialog = document.querySelector("#closeDialog");
 
-
+// -----------------------------
+// 3. Render the event cards
+// -----------------------------
 function loadAllData(events) {
     eventList.innerHTML = "";
 
     events.forEach(event => {
-        const [date, time] = event.eventDate.split(" ");
-
         const eventCard = document.createElement("article");
         eventCard.classList.add("event-card");
         eventCard.dataset.eventId = event.eventId;
 
-    eventCard.innerHTML = `
-        <img src="${event.eventImg}" alt="${event.eventTitle}">
-        <h3>${event.eventTitle}</h3>
-        <p>${event.eventDesc}</p>
-        <a href="#booking">Boka här</a>
-    `;
+        eventCard.innerHTML = `
+            <img src="${event.eventImg}" alt="${event.eventTitle}">
+            <h3>${event.eventTitle}</h3>
+            <p>${event.eventDesc}</p>
+            <a href="#booking">Boka här</a>
+        `;
 
         eventList.appendChild(eventCard);
     });
@@ -63,6 +66,9 @@ function loadAllData(events) {
 
 loadAllData(eventData);
 
+// -----------------------------
+// 4. Search dropdown and filtering
+// -----------------------------
 function showSuggestions(searchWord) {
     suggestionList.innerHTML = "";
 
@@ -84,9 +90,11 @@ function showSuggestions(searchWord) {
 
 function showAllSuggestions() {
     suggestionList.innerHTML = "";
+
     eventData.forEach(event => {
         suggestionList.innerHTML += `<li><span>${event.eventTitle}</span><br>${event.eventCategory}</li>`;
     });
+
     suggestionList.style.display = "block";
 }
 
@@ -101,7 +109,6 @@ function showFilteredEvents(searchWord) {
         loadAllData(filtered);
     }
 }
-
 
 searchInput.addEventListener("input", function () {
     showSuggestions(searchInput.value.toLowerCase());
@@ -120,12 +127,16 @@ searchForm.addEventListener("submit", function (event) {
 suggestionList.addEventListener("click", function (event) {
     const li = event.target.closest("li");
     if (!li) return;
+
     const clickedTitle = li.querySelector("span").textContent;
     searchInput.value = clickedTitle;
     showSuggestions("");
     showFilteredEvents(clickedTitle.toLowerCase());
 });
 
+// -----------------------------
+// 5. Event card click opens the dialog
+// -----------------------------
 eventList.addEventListener("click", function (event) {
     if (event.target.closest("a")) return;
 
@@ -149,9 +160,7 @@ eventList.addEventListener("click", function (event) {
     document.querySelector("#dialogLocation").textContent = selectedEvent.eventLocation;
 
     dialog.showModal();
-    
 });
-
 
 closeDialog.addEventListener("click", function () {
     dialog.close();
@@ -163,7 +172,9 @@ dialog.addEventListener("click", function (event) {
     }
 });
 
-
+// -----------------------------
+// 6. Booking form
+// -----------------------------
 const form = document.querySelector("#eventForm");
 const nameInput = document.querySelector("#bName");
 const emailInput = document.querySelector("#bEmail");
@@ -192,6 +203,9 @@ form.addEventListener("submit", function (event) {
     form.reset();
 });
 
+// -----------------------------
+// 7. Organizers (only runs on a page with #organizerList)
+// -----------------------------
 const organizers = [
     { name: "Simon", role: "Produkt ägare", bio: "vi älskar Event flow", img: "..." },
     { name: "Mark", role: "scrum master", bio: "vi älskar Event flow", img: "..." },

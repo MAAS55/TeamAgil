@@ -164,7 +164,7 @@ body {
 }
 
 .hero {
-    background-image: url("image/sundsvall1.jpg");
+    background-image: url("images/sundsvall1.jpg");
     display: flex;
     background-size: cover;
     background-position: center;

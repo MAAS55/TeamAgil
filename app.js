@@ -212,20 +212,18 @@ const organizers = [
     { name: "Doan", role: "team leader", bio: "vi älskar Event flow", img: "..." }
 ];
 
-function loadOrganizers(organizers) {
-    const target = document.querySelector("#organizerList");
-    if (!target) return;
-
-    target.innerHTML = "";
+function loadOrganizers(organizers){  
+    const target =document.querySelector("#organizerList");
+    if(!target)return;
+    target.innerHTML="";
     organizers.forEach(organizer => {
-        const card = document.createElement("article");
-        card.innerHTML = `
-            <img src="${organizer.img}" alt="${organizer.name}">
-            <h3>${organizer.name}</h3>
-            <p>${organizer.role}</p>
-            <p>${organizer.bio}</p>`;
+        const card =document.createElement("article");
+        card.innerHTML=`
+    <img src="${organizer.img}" alt="${organizer.name}">
+    <h3>${organizer.name}</h3>
+    <p>${organizer.role}</p>
+    <p>${organizer.bio}</p>`;
         target.appendChild(card);
     });
 }
-
 loadOrganizers(organizers);

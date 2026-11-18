@@ -1,6 +1,6 @@
 let eventData;
 
-const apiUrl = "http://localhost:5043/api/events/"
+const apiUrl = "http://localhost:5043/api/events"
 
 const eventList = document.querySelector("#eventList")
 const filterStatus = document.querySelector("#filterStatus");
@@ -27,8 +27,10 @@ function displayData(eventData) {
         `
             <h3>${event.title}</h3>
             <p>${event.description}</p>
-            <a href="#booking">Läs mer</a>
+            <button>Läs mer</button>
         `
+        const btn = eventCard.querySelector("button");
+        btn.addEventListener("click", () => renderDialog(event.id));
         eventList.appendChild(eventCard)
     });
 }
@@ -300,6 +302,8 @@ function renderDialog(id) {
 
     dialog.showModal();
 }
+
+loadData();
 
 /*
 eventcard.forEach((card) => {

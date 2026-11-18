@@ -35,7 +35,6 @@
 
 .booking{
     display: flex;
-    flex-direction: column;
     justify-self: center;
     border: 5;
     border-style:groove;
@@ -47,16 +46,6 @@
     width: 25%; 
     font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif; 
     font-weight: bold;
-    justify-content: space-evenly;
-}
-
-.eventForm{
-    display: flex;
-    flex-direction: column;
-}
-
-.eventForm div{
-    padding: 1rem;
 }
 
 .eventForm div input{
@@ -78,7 +67,6 @@ button {
     padding: 0.5rem 1rem;
     font-weight: bold;
     cursor: pointer;
-    width: 25%;
 }
 
 @media screen and (min-width: 600px) {
@@ -92,11 +80,5 @@ button {
     justify-content: center;
     }
     
-    .eventForm{
-    display: flex;
-    justify-content: space-between;
-    flex-wrap: wrap;
-    flex-direction: row;
-}
 
 }

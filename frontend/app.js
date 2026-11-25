@@ -1,6 +1,6 @@
 let eventData;
 
-const apiUrl = "http://localhost:5043/api/test/error"
+const apiUrl = "http://localhost:5043/api/events"
 
 const eventList = document.querySelector("#eventList")
 const filterStatus = document.querySelector("#filterStatus");
@@ -29,7 +29,7 @@ function displayData(eventData) {
                     <li>Plats: <span class="event-location"></span></li>
                 </ul>
             </details>
-            <a href="#booking">Boka här</a>
+            <button type="button" class="details-btn">Visa detaljer</button>
         `;
 
         eventCard.querySelector(".event-title").textContent = event.title;

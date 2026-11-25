@@ -93,6 +93,66 @@
             </form>
             <p id="formFeedback" role="status" aria-live="polite"></p>
         </section>
+
+        <dialog id="dialog">
+
+        <form method="dialog" class="close-form">
+            <button type="submit" class="close-button">✕</button>
+        </form>
+
+        <section class="event-header">
+            <span class="tag" id="eventCategory">Music</span>
+            <h2 id="eventTitle"><!-- Event Title --></h2>
+        </section>
+
+        <section class="info-grid">
+            <div class="info-box">
+                <span class="label">Datum</span>
+                <strong id="eventDate"><!-- Event Date --></strong>
+            </div>
+
+            <div class="info-box">
+                <span class="label">Tid</span>
+                <strong id="eventTime"><!-- Event Time --></strong>
+            </div>
+
+            <div class="info-box">
+                <span class="label">Plats</span>
+                <strong id="eventLocation"><!-- Event Location --></strong>
+            </div>
+
+            <div class="info-box">
+                <span class="label">Pris</span>
+                <strong><!-- Event Price --></strong>
+            </div>
+            <div id="booking-button">
+            </div>
+
+        </section>
+
+
+        <section class="description">
+            <h3>Om eventet</h3>
+            <p id="eventDesc">
+                <!-- Event Description -->
+            </p>
+            <p id="eventOrganizer"><strong>Arrangör:</strong> <!-- Event Organizer --></p>
+        </section>
+
+
+        <section class="map">
+            <h3>Hitta hit</h3>
+            <iframe
+                id="mapFrame"
+                src=""
+                width="100%"
+                height="250"
+                style="border:0;"
+                loading="lazy">
+            </iframe>
+        </section>
+
+    </dialog>
     </main>
     <footer>
 

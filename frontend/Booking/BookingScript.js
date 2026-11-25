@@ -1,5 +1,5 @@
 let eventData;
-const apiUrl = "http://localhost:5043/api/events/"
+const apiUrl = "http://localhost:5043/api/events"
 const apiEventList = document.querySelector("#bEvent")
 const apiPlaceList = document.querySelector("#bPlace");
 const bookningButton = document.querySelector("#booking-button");
@@ -25,9 +25,11 @@ async function fetchEventData(url) {
         // Felhantering
         if (!response.ok){
             if (response.status === 404){
-                userMessage = "Kunde inte boka."
+                userMessage = "Kunde inte boka. Försök igen.";
+                throw new Error("Kunde inte boka. Försök igen")
             } else if (response.status >= 500 && response.status <= 599){
-                userMessage = "Tjänsten har problem. försök igen";
+                userMessage = "Tjänsten har problem. Försök igen.";
+                throw new Error("Tjänsten har problem. Försök igen")
             }
             throw new Error(`HTTP-fel: ${response.status}`);
         }
@@ -39,6 +41,8 @@ async function fetchEventData(url) {
             return;
         }
 
+        apiStatus.textContent = "";
+        
         const defaultPlaceOpt = document.createElement("option");
         const defaultEventOpt = document.createElement("option");
         
@@ -67,7 +71,6 @@ async function fetchEventData(url) {
         apiStatus.textContent = userMessage;
     } finally{
         bookningButton.disabled = false;
-        apiStatus.textContent = "";
     }
 }
 
@@ -138,13 +141,13 @@ form.addEventListener("submit", event => {
 
     popup.classList.add("show-popup")
         
-    confirmName.textContent = name;
-    confirmEmail.textContent = email;  
-    confirmPhone.textContent = phone;
-    confirmEvent.textContent = eventSelects;
-    confirmTicket.textContent = ticket;
-    confirmDate.textContent = date;
-    confirmPlace.textContent = place;
+    confirmName.textContent = `Ditt namn: ${name}`;
+    confirmEmail.textContent = `Ditt email: ${email}`;  
+    confirmPhone.textContent = `Ditt telefon: ${phone}`;
+    confirmEvent.textContent = `Valda evenemang: ${eventSelects}`;
+    confirmTicket.textContent = `Antal biljett: ${ticket}`;
+    confirmDate.textContent = `Evenemang datum: ${date}`;
+    confirmPlace.textContent = `Plats: ${place}`;
 });
 
 // Popup

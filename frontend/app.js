@@ -1,6 +1,6 @@
 let eventData;
 
-const apiUrl = "http://localhost:5043/api/test/error"
+const apiUrl = "http://localhost:5043/api/events"
 
 const eventList = document.querySelector("#eventList")
 const filterStatus = document.querySelector("#filterStatus");
@@ -16,26 +16,34 @@ function displayData(eventData) {
     eventData.forEach(event => {
         let eventCard = document.createElement("article");
         eventCard.classList.add("event-card");
-        eventCard.innerHTML = 
-        `
-            <h3>${event.title}</h3>
-            <p>${event.description}</p>
-            <img src="${event.eventImg}">
+        eventCard.innerHTML = `
+            <h3 class="event-title"></h3>
+            <p class="event-description"></p>
             <details open>
                 <summary>Details</summary>
                 <ul>
-                    <li>Datum: ${event.startDate}</li>
-                    <li>Tid: ${event.startTime}</li>
-                    <li>Arrangör: ${event.organizer}</li>
-                    <li>Kategori: ${event.category}</li>
-                    <li>Plats: ${event.venue}, ${event.city}</li>
+                    <li>Datum: <span class="event-date"></span></li>
+                    <li>Tid: <span class="event-time"></span></li>
+                    <li>Arrangör: <span class="event-organizer"></span></li>
+                    <li>Kategori: <span class="event-category"></span></li>
+                    <li>Plats: <span class="event-location"></span></li>
                 </ul>
             </details>
-            <a href="Booking/Booking.html">Boka här</a>
-        `
+            <button type="button" class="details-btn">Visa detaljer</button>
+        `;
+
+        eventCard.querySelector(".event-title").textContent = event.title;
+        eventCard.querySelector(".event-description").textContent = event.description;
+        eventCard.querySelector(".event-date").textContent = event.startDate;
+        eventCard.querySelector(".event-time").textContent = event.startTime;
+        eventCard.querySelector(".event-organizer").textContent = event.organizer;
+        eventCard.querySelector(".event-category").textContent = event.category;
+        eventCard.querySelector(".event-location").textContent = `${event.venue}, ${event.city}`;
+
         const btn = eventCard.querySelector("button");
         btn.addEventListener("click", () => renderDialog(event.id));
-        eventList.appendChild(eventCard)
+
+        eventList.appendChild(eventCard);
     });
 }
 

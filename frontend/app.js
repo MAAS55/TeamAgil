@@ -1,6 +1,6 @@
 let eventData;
 
-const apiUrl = "http://localhost:5043/api/events"
+const apiUrl = "http://localhost:5043/api/test/error"
 
 const eventList = document.querySelector("#eventList")
 const filterStatus = document.querySelector("#filterStatus");
@@ -10,13 +10,6 @@ const filterOrganizer = document.querySelector("#filterOrganizer");
 const filterForm = document.querySelector("#filterForm")
 
 let isFiltered = false;
-// Booking formulär
-const form = document.querySelector("#eventForm");
-const nameInput = document.querySelector("#bName");
-const emailInput = document.querySelector("#bEmail");
-const phoneInput = document.querySelector("#bPhone");
-const eventSelect = document.querySelector("#bEvent");
-const feedback = document.querySelector("#formFeedback")
 
 function displayData(eventData) {
     eventList.innerHTML = '';
@@ -46,6 +39,9 @@ function displayData(eventData) {
         eventCard.querySelector(".event-organizer").textContent = event.organizer;
         eventCard.querySelector(".event-category").textContent = event.category;
         eventCard.querySelector(".event-location").textContent = `${event.venue}, ${event.city}`;
+
+        const btn = eventCard.querySelector("button");
+        btn.addEventListener("click", () => renderDialog(event.id));
 
         eventList.appendChild(eventCard);
     });
@@ -192,28 +188,6 @@ async function fetchEventData(url) {
   }
 }
 
-
-form.addEventListener("submit", event => {
-    event.preventDefault();
-
-    // Läsa värde
-    const name = nameInput.value.trim();
-    const email = emailInput.value.trim();
-    const phone = phoneInput.value.trim();
-    const eventSelects = eventSelect.value;
-
-    if(name === "" || email === "" || phone === "" || eventSelects === "") {
-        feedback.textContent = "Vänligen fyll i alla fält.";
-        feedback.classList.add("error");
-        feedback.classList.remove("success");
-        return;
-    }
-
-    feedback.textContent = "Tack för din bokning!";
-    feedback.classList.add("success");
-    feedback.classList.remove("error");
-});
-
 filterForm.addEventListener("input", loadData);
 
 // Sök Funktion
@@ -326,7 +300,7 @@ eventcard.forEach((card) => {
   card.addEventListener("click", () => {
     dialog.showModal();
     opencheck(dialog);
-    });
+    });https://github.com/MAAS55/TeamAgil/pull/57/conflict?name=frontend%252Fapp.js&ancestor_oid=7770a189b2e6338a58b79c002ebd445b775fb569&base_oid=55684d3edcff3bfd3441812a926d8381de1f2ac0&head_oid=7aa8a1fd414e8edca1cb837815f2755b77ea5b55
   });
 
   dialog.addEventListener("close", () => {

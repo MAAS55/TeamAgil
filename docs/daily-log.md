@@ -128,3 +128,23 @@ _____________________________________________________
 .
 ### förändring i plan eller prioritet
 inga just nu
+_____________________________________________________
+## Daily Scrum – Datum 2026-11-25
+
+### Vad är Done och verifierat?
+De viktigaste är klart vi behöver bara färdigställa det
+
+### Vad måste avslutas idag för att leveransen ska bli klar?
+
+hem knapp, fokus markering, error lägen, retro perspetiv
+
+### Finns blockerare, öppna reviews eller testfel?
+- nej ingenting än så länge 
+
+### blockerare, reviewköer och beroenden, 
+- Det mesta är klar vi måste bara dubble kolla vid senare tillfälle
+
+### hjälp eller beslut som behövs
+. just nu alla 
+### Vad ska flyttas till backlogg i stället för att startas nu?
+inga just nu

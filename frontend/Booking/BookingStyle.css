@@ -1,5 +1,6 @@
 body{
     background-color: #010026;
+    font-family: Arial, Helvetica, sans-serif;
 }
 
 .header {
@@ -9,7 +10,6 @@ body{
     justify-content: space-between;
     padding-left: 1rem;
     padding-right: 1rem;
-    font-family: Arial, Helvetica, sans-serif;
     color: white;
 }
 
@@ -22,7 +22,6 @@ body{
     justify-content: center;
     align-items: center;
     height: 3rem;
-    font-family:Arial, Helvetica, sans-serif;
 }
 
 .nav-bar ul{
@@ -42,7 +41,6 @@ body{
     flex-direction: column;
     justify-self: center;
     border: 5;
-    border-radius: 10px;
     border-style:groove;
     width: 90%;
     background-color: white;
@@ -63,13 +61,17 @@ body{
 
 .eventForm div{
     padding: 1rem;
+    
+    label{
+        margin-right: 1rem;
+    }
 }
 
 .eventForm div input{
     height: 30px;
     font-size: 16px;
     border-radius: 5px;
-    width: 8rem;
+    width: 4rem;
 }
 .eventForm div select{
     height: 30px;
@@ -85,7 +87,23 @@ button {
     padding: 0.5rem 1rem;
     font-weight: bold;
     cursor: pointer;
-    width: 25%;
+    width: 50%;
+}
+
+.receipt-box{
+    color: black;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    font-weight: bold;
+
+    display: flex;
+    flex-direction: column;
+    justify-self: center;
+    border: 5;
+    border-style:groove;
+    width: 90%;
+    background-color: white;
 }
 
 @media screen and (min-width: 600px) {
@@ -104,6 +122,15 @@ button {
     justify-content: space-between;
     flex-wrap: wrap;
     flex-direction: row;
+
+    div input{
+        width: 90%;
+    }
+
+    button {
+    width: 15%;
+    margin-right: 5%;
+}
 }
 
 }

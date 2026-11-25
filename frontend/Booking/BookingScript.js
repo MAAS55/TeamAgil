@@ -2,15 +2,19 @@ let eventData;
 const apiUrl = "http://localhost:5043/api/events/"
 const apiEventList = document.querySelector("#bEvent")
 const apiPlaceList = document.querySelector("#bPlace");
+const bookningButton = document.querySelector("#booking-button");
 
 const apiStatus = document.querySelector("#api-status");
 
 
 // Fetch data
 async function fetchEventData(url) {
+    apiStatus.textContent = "Bookningen laddar...";
 
     apiEventList.replaceChildren();
     apiPlaceList.replaceChildren();
+
+        bookningButton.disabled = true;
 
     let userMessage = "Kunde inte boka. Försök igen.";
 
@@ -61,6 +65,9 @@ async function fetchEventData(url) {
     } catch (error){
         console.error("Kunde inte hitta info");
         apiStatus.textContent = userMessage;
+    } finally{
+        bookningButton.disabled = false;
+        apiStatus.textContent = "";
     }
 }
 

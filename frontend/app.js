@@ -1,6 +1,6 @@
 let eventData;
 
-const apiUrl = "http://localhost:5043/api/events"
+const apiUrl = "http://localhost:5043/api/events    "
 
 const eventList = document.querySelector("#eventList")
 const filterStatus = document.querySelector("#filterStatus");
@@ -55,7 +55,6 @@ function displayMessage(message) {
 }
 
 function filterData(eventData, filter) {
-    console.log("Running filterData")
     console.log(eventData, filter)
     return eventData.filter(element => {
         const matchesCategory = !filter.category || element.category === filter.category;
@@ -108,7 +107,12 @@ function addFilterOption(eventData) {
 function transformRawData(rawFetchData) {
 
     let fetchData = rawFetchData.map((element) => {
-        let address = element.venue.split(",");
+        try {
+            let address = element.venue.split(",");
+        } catch (error) {
+            let address = "okänd";
+        }
+
         const eventDateObj = new Date(element.startsAt);
             // Output: "12 dec. 2026" (or "12 december 2026" if month: 'long')
         const date = eventDateObj.toLocaleDateString('sv-SE', {
@@ -161,7 +165,7 @@ async function loadData() {
                 displayMessage("Det finns inga evenemang att ladda in")
             }
     } catch (error) {
-        displayMessage("Ett fel uppstod vid hämtning av data")
+        displayMessage(error.message)
     }
 
 }
@@ -171,13 +175,15 @@ async function fetchEventData(url) {
     displayMessage("Loading data... ")
     const response = await fetch(url, {
       method: 'GET', // 'POST', 'PUT', 'DELETE', etc.
-      headers: {
-        'Content-Type': 'application/json',
-      }
     });
 
-    if (!response.ok || response.status === 404) {
-      throw new Error(`HTTP error! Status: ${response.status}`);    
+    if (!response.ok) {
+        if (response.status === 404) {
+            throw new Error(`Kunde inte hitta några evenemang försök igen`);
+        } else if (response.status >= 500 && response.status <= 599) {
+            throw new Error(`Tjänstfel, tjänsten har problem försök igen`);
+        }
+          
     }
 
     const data = await response.json();

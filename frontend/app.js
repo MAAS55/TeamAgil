@@ -1,6 +1,6 @@
 let eventData;
 
-const apiUrl = "http://localhost:5043/api/test/error"
+const apiUrl = "http://localhost:5043/api/events"
 
 const eventList = document.querySelector("#eventList")
 const filterStatus = document.querySelector("#filterStatus");

@@ -107,10 +107,11 @@ function addFilterOption(eventData) {
 function transformRawData(rawFetchData) {
 
     let fetchData = rawFetchData.map((element) => {
+        let address;
         try {
-            let address = element.venue.split(",");
+            address = element.venue.split(",");
         } catch (error) {
-            let address = "okänd";
+            address = "okänd";
         }
 
         const eventDateObj = new Date(element.startsAt);

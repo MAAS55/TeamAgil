@@ -33,6 +33,8 @@ function displayData(eventData) {
             </details>
             <a href="Booking/Booking.html">Boka här</a>
         `
+        const btn = eventCard.querySelector("button");
+        btn.addEventListener("click", () => renderDialog(event.id));
         eventList.appendChild(eventCard)
     });
 }
@@ -250,6 +252,61 @@ suggestionList.addEventListener("click", function (event) {
     showFilteredEvents(clickedTitle.toLowerCase());
 });
 
+
+// Event Popup
+const dialog = document.querySelector("#dialog");
+
+function openDialog() {
+  dialog.log(dialog.open ? "Dialog: open" : "Dialog: closed");
+}
+
+function renderDialog(id) {
+    let event = eventData.find(e => e.id === id);
+    const eventTitle = document.querySelector("#eventTitle");
+    const eventCategory = document.querySelector("#eventCategory");
+    const eventDate = document.querySelector("#eventDate");
+    const eventTime = document.querySelector("#eventTime");
+    const eventLocation = document.querySelector("#eventLocation");
+    const eventDesc = document.querySelector("#eventDesc");
+    const eventOrganizer = document.querySelector("#eventOrganizer");
+    const mapFrame = document.querySelector("#mapFrame");
+
+    eventTitle.textContent = event.title;
+    eventCategory.textContent = event.category
+    eventDate.textContent = event.startDate
+    eventTime.textContent = event.startTime
+    eventLocation.textContent = `${event.venue}, ${event.city}`
+    eventDesc.textContent = event.description
+    eventOrganizer.textContent = event.organizer
+    
+    mapFrame.src = `https://www.google.com/maps?q=${event.venue}+${event.city}&output=embed`
+    
+
+    dialog.showModal();
+}
+
+loadData();
+
+/*
+eventcard.forEach((card) => {
+  card.addEventListener("click", () => {
+    dialog.showModal();
+    opencheck(dialog);
+    });https://github.com/MAAS55/TeamAgil/pull/57/conflict?name=frontend%252Fapp.js&ancestor_oid=7770a189b2e6338a58b79c002ebd445b775fb569&base_oid=55684d3edcff3bfd3441812a926d8381de1f2ac0&head_oid=7aa8a1fd414e8edca1cb837815f2755b77ea5b55
+  });
+
+  dialog.addEventListener("close", () => {
+    opencheck(dialog);
+  });
+
+const bookingButton = document.getElementById("booking-button");
+
+const button = document.createElement("button");
+button.type = "submit";
+button.textContent = "Boka";
+
+bookingButton.appendChild(button);
+*/
 // -----------------------------
 // 7. Organizers (only runs on a page with #organizerList)
 // -----------------------------

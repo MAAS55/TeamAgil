@@ -325,3 +325,27 @@ button.textContent = "Boka";
 
 bookingButton.appendChild(button);
 */
+// -----------------------------
+// 7. Organizers (only runs on a page with #organizerList)
+// -----------------------------
+const organizers = [
+    { name: "Simon", role: "Produkt ägare", bio: "vi älskar Event flow", img: "..." },
+    { name: "Mark", role: "scrum master", bio: "vi älskar Event flow", img: "..." },
+    { name: "Doan", role: "team leader", bio: "vi älskar Event flow", img: "..." }
+];
+
+function loadOrganizers(organizers){  
+    const target =document.querySelector("#organizerList");
+    if(!target)return;
+    target.innerHTML="";
+    organizers.forEach(organizer => {
+        const card =document.createElement("article");
+        card.innerHTML=`
+    <img src="${organizer.img}" alt="${organizer.name}">
+    <h3>${organizer.name}</h3>
+    <p>${organizer.role}</p>
+    <p>${organizer.bio}</p>`;
+        target.appendChild(card);
+    });
+}
+loadOrganizers(organizers);

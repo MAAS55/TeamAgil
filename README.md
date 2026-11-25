@@ -13,6 +13,47 @@
 ## tekniker
 
 ## mappstruktur
+## 📁 Mappstruktur
+
+```text
+TeamAgil
+
+├── database/                # Innehåller alla sql filer
+│   ├── database
+│   │   ├── triggers.sql/ 
+│   ├── 01-schema.sql/    
+│   ├── 02-data.sql/       
+│   ├── 03-queries.sql/     
+│   ├── Trigger.sql/ 
+│   ├── services/   
+│   ├── procedures.sql/ 
+│   ├── Trigger.sql/  
+│   └── views.sql/
+├── docs/                    # Projektdokumentation
+│   ├── api-review.md/     
+│   ├── business-rule.md/ 
+│   ├── sdaily-log.md/   
+│   ├── erd_database.png/ 
+│   ├── normalization.md/  
+│   └── product-vision.md/
+├── frontend/
+│   ├── Booking/
+│   │   ├── Receipt/
+│   │   │   ├── Receipt.html/    
+│   │   │   └── ReceiptScript.js/
+│   │   ├── Booking.html/  
+│   │   ├── BookingScript.js/    
+│   │   └── BookingStyle.css/
+│   ├── eventflow-api/ 
+│   ├── images/             # Alla bilder 
+│   ├── about.html/  
+│   ├── app.js/    
+│   ├── index.html/   
+│   └── style.css/
+├── .gitignore    
+├── Program.cs
+├── README.md  
+└── TeamAgil.csproj
 
 ## installations- och startinstruktioner
 
